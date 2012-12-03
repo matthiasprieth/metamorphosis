@@ -4,8 +4,6 @@
   <tr>
 	<th>Hello</th>
     <th>Test</th>
-    <th>Firstname</th>
-    <th>Lastname</th>
     <th>Password</th>
     <th>Salt</th>
     <th>Email</th>
@@ -17,8 +15,6 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.firstname %></td>
-    <td><%= user.lastname %></td>
     <td><%= user.password %></td>
     <td><%= user.salt %></td>
     <td><%= user.email %></td>
