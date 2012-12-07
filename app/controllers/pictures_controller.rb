@@ -1,4 +1,6 @@
 class PicturesController < ApplicationController
+  before_filter :authenticate_user!, except: [:index, :show]
+
   # GET /pictures
   # GET /pictures.json
   def index
