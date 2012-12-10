@@ -21,10 +21,13 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'capistrano'
-gem 'devise'
+gem 'capistrano' #for deploying
+gem 'devise' #login gem
 gem 'omniauth'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '1.4.0'
+#gem 'rmagick', '=2.12.0' #to modify pictures (ex. width, height)
+gem 'carrierwave' #for uploading files, pictures and using 'rmagick' to modify pictures
+gem 'koala' # gem for using the facebook open graph api
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

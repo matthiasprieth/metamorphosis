@@ -5,6 +5,8 @@
       <%= link_to 'Edit profile', edit_user_registration_path %> |
       <%= link_to "Logout", destroy_user_session_path, method: :delete %>
       <span class="logged_in">Logged in as <strong><%= current_user.email %></strong>.</span>
+      <h1>This is a Test... I've got some Open Graph Data from you now! Feeling like a hacker!</h1>
+      <%= current_user.getLink %>
   <% else %>
       <%= link_to "Sign up", new_user_registration_path %> |
       <%= link_to "Login", new_user_session_path %>
