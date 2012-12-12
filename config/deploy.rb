@@ -1,7 +1,7 @@
  require "bundler/capistrano"
  set :application, "metamorphosis"
  set :scm, :git
- set :repository,  "ssh://fhs33729@repos.mediacube.at/opt/git/web_2012/metamorphosis.git/"
+ set :repository,  "ssh://fhs33735@repos.mediacube.at/opt/git/web_2012/metamorphosis.git/"
  set :deploy_to, "/var/www/virthosts/metamorphosis.mediacube.at"
  set :user, "deploy_metam"
  set :branch, "master"

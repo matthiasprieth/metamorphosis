@@ -67,3 +67,12 @@ div {
     list-style: square;
   }
 }
+
+.cssThumb{
+  border: 5px solid darkgrey;
+  width:200px;
+  img {
+    width:100%;
+    height:100%;
+  }
+}
