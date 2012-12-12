@@ -5,6 +5,9 @@
  set :deploy_to, "/var/www/virthosts/metamorphosis.mediacube.at"
  set :user, "deploy_metam"
  set :branch, "master"
+
+ set :bundle_flags,    "--quiet"   # do not run with --deployment,
+                                   # this will generate a new Gemfile.lock on the server
  default_run_options[:pty] = true
  set :use_sudo, false
  set :port, 5412
