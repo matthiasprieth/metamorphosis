@@ -1,8 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<div class="cssThumb">
+<!--<div class="cssThumb">-->
+<b>this is the <i>thumb</i> version uploaded with <i>carrierwace</i> and modified with <i>rmagick</i>:</b></br>
+<%= image_tag @picture.image_url(:thumb).to_s %>
+</br>
+<!--</div>-->
+
+<b>this is the <i>small</i> version uploaded with <i>carrierwace</i> and modified with <i>rmagick</i>:</b></br>
+<%= image_tag @picture.image_url(:small).to_s %>
+</br>
+
+<b>this is the <i>middle</i> version uploaded with <i>carrierwace</i> and modified with <i>rmagick</i>:</b></br>
+<%= image_tag @picture.image_url(:middle).to_s %>
+</br>
+
+<b>this is the <i>normal</i> version uploaded with <i>carrierwace</i>:</b></br>
 <%= image_tag @picture.image_url.to_s %>
-</div>
+</br>
 
 <p>
   <b>Name:</b>
