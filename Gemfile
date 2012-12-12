@@ -28,6 +28,7 @@ gem 'omniauth-facebook', '1.4.0'
 #gem "rmagick", "2.13.1"  #to modify pictures (ex. width, height)
 gem 'carrierwave' #for uploading files, pictures and using 'rmagick' to modify pictures
 gem 'koala' # gem for using the facebook open graph api
+gem 'mysql2', :group => :production
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
