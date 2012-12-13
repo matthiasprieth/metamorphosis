@@ -8,8 +8,9 @@ Metamorphosis::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  # Disable Rails's static asset server (Apache or nginx will already do this)
-  config.serve_static_assets = false
+  # Disable Rails's static asset server (Apache or nginx will already do this) --> wtf Apache doesn't do anything
+  #config.serve_static_assets = false
+  config.serve_static_assets = true
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
@@ -50,6 +51,16 @@ Metamorphosis::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_url_options = { :host => 'metamorphosis.mediacube.at' }
+
+  config.action_mailer.smtp_settings = {
+      enable_starttls_auto: true,
+      address: 'smtp.gmail.com',
+      port: 587,
+      authentication: 'plain',
+      user_name: '0815testemail@gmail.com',
+      password: '0815test'
+  }
 
   # Enable threaded mode
   # config.threadsafe!
