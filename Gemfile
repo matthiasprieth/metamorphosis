@@ -24,7 +24,7 @@ gem 'jquery-rails'
 gem 'capistrano' #for deploying
 gem 'devise' #login gem
 gem 'omniauth'
-gem 'omniauth-facebook', '1.4.0'
+gem 'omniauth-facebook'
 gem "rmagick", "2.13.1"  #to modify pictures (ex. width, height)
 gem 'carrierwave' #for uploading files, pictures and using 'rmagick' to modify pictures
 gem 'koala' # gem for using the facebook open graph api
