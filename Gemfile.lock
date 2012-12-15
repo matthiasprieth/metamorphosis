@@ -165,7 +165,7 @@ DEPENDENCIES
   koala
   mysql2
   omniauth
-  omniauth-facebook (= 1.4.0)
+  omniauth-facebook
   rails (= 3.2.8)
   rmagick (= 2.13.1)
   sass-rails (~> 3.2.3)
