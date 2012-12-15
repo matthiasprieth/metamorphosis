@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
-      user = User.create(username:auth.extra.raw_info.name,
+      user = User.new(username:auth.extra.raw_info.name,
                          provider:auth.provider,
                          uid:auth.uid,
                          email:auth.info.email,
@@ -26,7 +26,8 @@ class User < ActiveRecord::Base
                          oauth_expires_at:Time.at(auth.credentials.expires_at)
       )
     end
-    user.skip_confirmation!
+    user.skip_confirmation! #important you have to User.new and than save it, otherwise confirmationmail will be send
+    user.save
     user
   end
 
