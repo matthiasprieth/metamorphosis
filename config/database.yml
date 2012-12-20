@@ -18,21 +18,21 @@ test:
   pool: 5
   timeout: 5000
 
-#production:
-#  adapter: mysql2
-#  database: metam_production
-#  pool: 5
-#  timeout: 5000
-#  username: metam
-#  password: j2P:eW
-
-#!!!!! ACHTUNG IN .YML IMMER RICHTIG EINRÜCKEN !!!!!!
 production:
   adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: metamorphosis_production_test
+  database: metam_production
   pool: 5
-  username: root
-  password:
-  host: 127.0.0.1
+  timeout: 5000
+  username: metam
+  password: j2P:eW
+
+#!!!!! ACHTUNG IN .YML IMMER RICHTIG EINRÜCKEN und Kommentare richtig auskommentieren !!!
+#production:
+  #adapter: mysql2
+  #encoding: utf8
+  #reconnect: false
+  #database: metamorphosis_production_test
+  #pool: 5
+  #username: root
+  #password:
+  #host: 127.0.0.1

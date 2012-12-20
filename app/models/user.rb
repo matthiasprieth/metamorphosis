@@ -38,5 +38,4 @@ class User < ActiveRecord::Base
   def getLink
     facebook.get_object("me")
   end
-
 end
