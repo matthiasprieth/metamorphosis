@@ -1,18 +1,20 @@
-<nav>
-  <li><%= link_to 'Home', root_url %></li>|
 
-  <% if user_signed_in? %>
-      <%= link_to 'Edit profile', edit_user_registration_path %> |
-      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-      <span class="logged_in">Logged in as <strong><%= current_user.email %></strong>.</span>
-      <h1>This is a Test... I've got some Open Graph Data from you now! Feeling like a hacker!</h1>
-      <%= current_user.getLink %>
-  <% else %>
-      <%= link_to "Sign up", new_user_registration_path %> |
-      <%= link_to "Login", new_user_session_path %>
-      <span class="fb_login"><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></span>
-  <% end %>
-
-</nav>
-
-<li style="padding:10px; font-size:11px; font-style:italic">Seitenaufrufe: <%= session[:count]%></li>
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="#">Metamorphosis</a>
+    <ul class="nav">
+      <li class="divider-vertical"></li>
+      <li class="active"><%= link_to 'Home', root_url %></li>
+      <% if user_signed_in? %>
+          <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+          <li class="divider-vertical"></li>
+          <li class="pull-right"><a href="#">Logged in as <%= current_user.email %></a></li>
+      <% else %>
+          <li><%= link_to "Sign up", new_user_registration_path %></li>
+          <li><%= link_to "Login", new_user_session_path %></li>
+          <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

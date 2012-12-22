@@ -1,4 +1,4 @@
-body {
+/*body {
   background-color: #fff;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
@@ -33,6 +33,10 @@ div {
   &.field, &.actions {
     margin-bottom: 10px;
   }
+}
+*/
+.container-fluid{
+  background-color: #F2F0F1;
 }
 
 #notice {
@@ -76,3 +80,8 @@ div {
     height:100%;
   }
 }
+
+.navbar{
+  margin-bottom: 0px;
+}
+

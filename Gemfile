@@ -18,6 +18,7 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+
 end
 
 gem 'jquery-rails'
@@ -29,6 +30,8 @@ gem "rmagick", "2.13.1"  #to modify pictures (ex. width, height)
 gem 'carrierwave' #for uploading files, pictures and using 'rmagick' to modify pictures
 gem 'koala' # gem for using the facebook open graph api
 gem 'mysql2' # , :group => :production
+gem 'bootstrap-sass' #twitter-bootstrap for sass
+gem 'masonry-rails' #A dynamic layout plugin for jQuery
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -2,4 +2,38 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "bootstrap";
 
+@font-face {
+  font-family: vly;
+  src: url(vanessalovesyou.ttf);
+  font-weight:600;
+}
+
+.row{
+  padding-left: 5%;
+}
+
+.brand {
+  font-family: vly;
+  color: #CB2027 !important;
+}
+
+.img-polaroid{
+  -webkit-box-shadow: 1px 1px 1px 1px ;
+  box-shadow: 1px 1px 1px 1px ;
+  float: left;
+  width: 450px;
+  float: left;
+  margin-right: 2%;
+  margin-bottom: 1em;
+}
+
+.img-polaroid td{
+  margin: 20px;
+}
+
+#title{
+  text-align: center;
+  padding: 2%;
+}

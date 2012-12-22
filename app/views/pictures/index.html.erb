@@ -1,4 +1,9 @@
-<h1>Listing pictures</h1>
+<h1 id="title" class="brand" xmlns="http://www.w3.org/1999/html">Metamorphosis</h1>
+<div id="masonry-container">
+    <% @pictures.reverse_each do |picture| %>
+      <div class="img-polaroid"><%= image_tag picture.image_url(:fixedWidth).to_s %></div>
+    <% end %>
+</div>
 
 <table>
   <tr>
@@ -14,22 +19,22 @@
     <th></th>
   </tr>
 
-<% @pictures.each do |picture| %>
-  <tr>
-    <td><%= picture.name %></td>
-    <td><%= picture.description %></td>
-    <td><%= picture.type %></td>
-    <td><%= picture.parent %></td>
-    <td><%= picture.gallery %></td>
-    <td><%= picture.rating %></td>
-    <td><%= picture.user_id %></td>
-    <td><%= link_to 'Show', picture %></td>
-    <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-    <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <% @pictures.each do |picture| %>
+      <tr>
+        <td><%= picture.name %></td>
+        <td><%= picture.description %></td>
+        <td><%= picture.type %></td>
+        <td><%= picture.parent %></td>
+        <td><%= picture.gallery %></td>
+        <td><%= picture.rating %></td>
+        <td><%= picture.user_id %></td>
+        <td><%= link_to 'Show', picture %></td>
+        <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
+        <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
 </table>
 
-<br />
-
 <%= link_to 'New Picture', new_picture_path %>
+
+
