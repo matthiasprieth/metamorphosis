@@ -1,7 +1,8 @@
 <h1 id="title" class="brand" xmlns="http://www.w3.org/1999/html">Metamorphosis</h1>
 <div id="masonry-container">
     <% @pictures.reverse_each do |picture| %>
-      <div class="img-polaroid"><%= image_tag picture.image_url(:fixedWidth).to_s %></div>
+      <!--<img src="http://jobyj.in/adipoli/img/gallery-images/1_1.png" class="test" alt="Pulpit rock" width="304" height="228">-->
+      <div class="img-polaroid"><%= image_tag picture.image_url(:fixedWidth).to_s, :class => 'polaroid-images' %></div>
     <% end %>
 </div>
 
