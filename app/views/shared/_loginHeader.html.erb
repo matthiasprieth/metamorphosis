@@ -1,20 +1,39 @@
 
 <div class="navbar">
   <div class="navbar-inner">
-    <a class="brand" href="#">Metamorphosis</a>
-    <ul class="nav">
-      <li class="divider-vertical"></li>
-      <li class="active"><%= link_to 'Home', root_url %></li>
-      <% if user_signed_in? %>
-          <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
-          <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+    <div class="container">
+
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <%= link_to 'Metamorphosis', root_url, :class => 'brand'  %>
+
+      <div class="nav-collapse collapse">
+        <ul class="nav">
           <li class="divider-vertical"></li>
-          <li class="pull-right"><a href="#">Logged in as <%= current_user.email %></a></li>
-      <% else %>
-          <li><%= link_to "Sign up", new_user_registration_path %></li>
-          <li><%= link_to "Login", new_user_session_path %></li>
-          <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
-      <% end %>
-    </ul>
+          <li class="active"><%= link_to 'Home', root_url %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+            <li class="divider-vertical"></li>
+            <li class="pull-right"><a href="#">Logged in as <%= current_user.email %></a></li>
+            <% if current_user.profil_pic.present? %>
+              <li><%= image_tag current_user.profil_pic_url.to_s %></li>
+            <% else %>
+              <li><%= image_tag "http://t1.gstatic.com/images?q=tbn:ANd9GcTyJdZr8SzVGyXljvQTGDtn7_unMqzySGBv_9f00kq81Wo0-TVDGnTTuMQ" %></li>
+            <% end %>
+          <% else %>
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <li><%= link_to "Login", new_user_session_path %></li>
+            <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
+          <% end %>
+        </ul>
+      </div>
+
+    </div>
   </div>
 </div>

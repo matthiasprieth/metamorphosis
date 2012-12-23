@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "bootstrap";
+@import "bootstrap-responsive";
 
 @font-face {
   font-family: vly;
@@ -19,18 +20,29 @@
   color: #CB2027 !important;
 }
 
+.pin{
+  float: left;
+  overflow: hidden;
+  margin-right: 1%;
+  margin-bottom: 1em;
+  width: 470px;
+}
+
 .img-polaroid{
   -webkit-box-shadow: 1px 1px 1px 1px ;
   box-shadow: 1px 1px 1px 1px ;
   float: left;
   width: 450px;
   float: left;
-  margin-right: 2%;
-  margin-bottom: 1em;
+  margin-bottom: 2%;
 }
 
 .img-polaroid td{
   margin: 20px;
+}
+
+.text{
+  padding: 2%;
 }
 
 #title{

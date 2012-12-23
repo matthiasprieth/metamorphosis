@@ -1,7 +1,7 @@
 $( window ).load( function()
 {
     $('#masonry-container').masonry({
-        itemSelector: '.img-polaroid'
+        itemSelector: '.pin'
     });
 
     $('.polaroid-images').adipoli({

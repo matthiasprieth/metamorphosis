@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121209234721) do
+ActiveRecord::Schema.define(:version => 20121223201327) do
 
   create_table "comments", :force => true do |t|
     t.text     "text"
@@ -43,8 +43,7 @@ ActiveRecord::Schema.define(:version => 20121209234721) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "firstname"
-    t.string   "lastname"
+    t.string   "username"
     t.string   "password"
     t.string   "salt"
     t.text     "description"
@@ -60,7 +59,6 @@ ActiveRecord::Schema.define(:version => 20121209234721) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "username"
     t.datetime "confirmed_at"
     t.string   "unconfirmed_email"
     t.string   "confirmation_token"
@@ -69,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20121209234721) do
     t.string   "uid"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
+    t.string   "profil_pic"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
