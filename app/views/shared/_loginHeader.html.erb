@@ -16,15 +16,18 @@
         <ul class="nav">
           <li class="divider-vertical"></li>
           <li class="active"><%= link_to 'Home', root_url %></li>
+          <li><%= link_to 'Top Users', users_path %></li>
+          <li><%= link_to 'Upload picture', new_picture_path %></li>
           <% if user_signed_in? %>
             <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
             <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
             <li class="divider-vertical"></li>
-            <li class="pull-right"><a href="#">Logged in as <%= current_user.email %></a></li>
+            <li><%= link_to ("Logged in as "+current_user.email), user_path(current_user) %></li>
             <% if current_user.profil_pic.present? %>
-              <li><%= image_tag current_user.profil_pic_url.to_s %></li>
+              <li><%= link_to image_tag(current_user.profil_pic_url.to_s), users_path(current_user) %></li>
+
             <% else %>
-              <li><%= image_tag "http://t1.gstatic.com/images?q=tbn:ANd9GcTyJdZr8SzVGyXljvQTGDtn7_unMqzySGBv_9f00kq81Wo0-TVDGnTTuMQ" %></li>
+              <li><%= link_to image_tag("http://t1.gstatic.com/images?q=tbn:ANd9GcTyJdZr8SzVGyXljvQTGDtn7_unMqzySGBv_9f00kq81Wo0-TVDGnTTuMQ"), user_path(current_user) %></li>
             <% end %>
           <% else %>
             <li><%= link_to "Sign up", new_user_registration_path %></li>

@@ -6,4 +6,5 @@ class Picture < ActiveRecord::Base
 
   #from CarrierWave gem
   mount_uploader :image, ImageUploader
+
 end

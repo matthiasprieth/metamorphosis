@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121223201327) do
+ActiveRecord::Schema.define(:version => 20121226004307) do
 
   create_table "comments", :force => true do |t|
     t.text     "text"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20121223201327) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "image"
+    t.integer  "pic_likes"
   end
 
   create_table "rewards", :force => true do |t|
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20121223201327) do
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.string   "profil_pic"
+    t.integer  "total_likes"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

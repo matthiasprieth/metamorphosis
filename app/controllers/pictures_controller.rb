@@ -3,7 +3,19 @@ class PicturesController < ApplicationController
 
   # GET /pictures
   # GET /pictures.json
+  def like
+    @picture = Picture.find(params[:like_id])
+    @user = User.find(@picture.user_id)
+    @picture.pic_likes = 0 if @picture.pic_likes.nil?
+    @picture.pic_likes += 1
+    @user.total_likes = 0 if @user.total_likes.nil?
+    @user.total_likes += 1
+    @picture.save
+    @user.save
+  end
+
   def index
+    like if params[:like_id]
     @pictures = Picture.all
 
     respond_to do |format|
@@ -29,8 +41,13 @@ class PicturesController < ApplicationController
   def new
     @picture = Picture.new
 
+    if params[:challenge_picture]
+      @challenge_picture = Picture.find(params[:challenge_picture])
+      $challenge_picture_id = params[:challenge_picture].to_i     # $global variable
+    end
+
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new.html.erb           s
       format.json { render json: @picture }
     end
   end
@@ -45,6 +62,9 @@ class PicturesController < ApplicationController
   def create
     @picture = Picture.new(params[:picture])
     @picture.user_id = current_user
+    @picture.parent = $challenge_picture_id
+    @picture.pic_likes = 0
+
 
     respond_to do |format|
       if @picture.save
@@ -87,4 +107,5 @@ class PicturesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

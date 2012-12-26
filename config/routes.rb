@@ -6,9 +6,16 @@ Metamorphosis::Application.routes.draw do
 
   resources :comments
 
+  resources :users
+
   resources :pictures
 
-  resources :users
+  resource :pictures do
+    # Route GET /user/admin_login
+    get 'like', :on => :collection
+  end
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

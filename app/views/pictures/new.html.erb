@@ -1,5 +1,11 @@
 <h1>New picture</h1>
 
+<% if @challenge_picture %>
+    <p>Your challenged picture is:</p>
+    <%= image_tag @challenge_picture.image_url(:fixedWidth).to_s %>
+    <p>Upload here your modified picture and have fun....</p>
+<% end %>
+
 <%= render 'form' %>
 
 <%= link_to 'Back', pictures_path %>
