@@ -24,6 +24,12 @@
             <%= button_to "Download", picture.image_url, { :method => :get, :class => "btn btn-danger" } %>
             <%= link_to "Start Challenge", new_picture_path(:challenge_picture => picture.id), :class => "btn btn-danger" %>
             <%= link_to "like", root_url(:like_id => picture.id), { :class => "btn btn-primary"} %>
+
+            <% @comments = Comment.where(:picture_id => picture.id) %>
+            <%= render :template => 'comments/index', :locals => { :commments => @comments }%>
+            <%= link_to "new comment", new_comment_path, id: "new_comment_button", remote: true %>
+            <% @picture_id = picture.id %>
+            <%= render :partial => 'comments/commentBox', :locals => { :picture_id => @picture_id} %>
           </div>
       </div>
     <% end %>

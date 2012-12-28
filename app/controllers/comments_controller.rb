@@ -31,6 +31,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @comment }
+      format.js
     end
   end
 
@@ -41,16 +42,34 @@ class CommentsController < ApplicationController
 
   # POST /comments
   # POST /comments.json
+#  def create
+#    @comment = Comment.new(params[:comment])
+#
+#    respond_to do |format|
+#      if @comment.save
+#        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+#        format.json { render json: @comment, status: :created, location: @comment }
+#      else
+#        format.html { render action: "new" }
+#        format.json { render json: @comment.errors, status: :unprocessable_entity }
+#      end
+#    end
+#  end
+
   def create
-    @comment = Comment.new(params[:comment])
+    puts "2222222222222222222222222222222222222222222222222222222222222"
+    puts params[:comment][:picture_id]
+    picture_id = params[:comment][:picture_id]
+    @picture = Picture.find(picture_id)
+    @comment = @picture.comments.build(params[:comment])
+    @comment.picture = @picture
+    @comment.user = current_user
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render json: @comment, status: :created, location: @comment }
+        format.html { redirect_to root_url }
       else
-        format.html { render action: "new" }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.html { render :action => 'new' }
       end
     end
   end
@@ -82,4 +101,5 @@ class CommentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

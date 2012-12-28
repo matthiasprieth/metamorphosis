@@ -10,9 +10,10 @@
     <th></th>
   </tr>
 
+
 <% @comments.each do |comment| %>
   <tr>
-    <td><%= comment.text %></td>
+    <td><%= comment.comment %></td>
     <td><%= comment.picture_id %></td>
     <td><%= comment.user_id %></td>
     <td><%= link_to 'Show', comment %></td>

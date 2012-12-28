@@ -4,16 +4,27 @@ Metamorphosis::Application.routes.draw do
 
   root :to => "pictures#index"
 
-  resources :comments
-
-  resources :users
-
   resources :pictures
 
-  resource :pictures do
-    # Route GET /user/admin_login
-    get 'like', :on => :collection
+  resources :comments
+
+  resources :pictures do
+    resources :comments
   end
+
+  resources :users do
+    resources :comments
+    resources :pictures do
+      resources :comments
+    end
+  end
+
+
+
+  #resource :pictures do
+  #  # Route GET /user/admin_login
+  #  get 'like', :on => :collection
+  #end
 
 
 

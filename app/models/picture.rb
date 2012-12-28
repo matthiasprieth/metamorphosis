@@ -7,4 +7,6 @@ class Picture < ActiveRecord::Base
   #from CarrierWave gem
   mount_uploader :image, ImageUploader
 
+  #acts_as_commentable gem
+  acts_as_commentable
 end
