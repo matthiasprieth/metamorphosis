@@ -8,16 +8,25 @@
 </head>
 <body>
 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/de_DE/all.js#xfbml=1&appId=315173175265453";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 
 
 <%= render "shared/loginHeader" %>
 <div class="container-fluid">
    <div class="row">
-      <div class="login">
+        <ul class="nav nav-tabs">
          <% flash.each do |name, msg| %>
-            <%= content_tag :div, msg, :id => "flash#{name}" %>
+            <li><div class="alert alert-success"><%= content_tag :div, msg, :id => "flash#{name}" %></div></li>
          <% end %>
-      </div>
+        </ul>
       <%= yield %>
    </div>
 </div>

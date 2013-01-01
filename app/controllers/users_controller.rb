@@ -44,6 +44,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     @user.total_likes = 0
+    @user.profil_pic ||= 'default_profil_pic.jpg'
 
     respond_to do |format|
       if @user.save
@@ -60,6 +61,8 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
+    @user.total_likes = 0 if @user.total_likes.nil?
+    @user.profil_pic ||= 'default_profil_pic.jpg'
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -76,8 +79,8 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user = User.find(params[:id])
-    #@user.remove_profil_pic!
-    #@user.remove_profil_pic = true
+    @user.remove_profil_pic!
+    @user.remove_profil_pic = true
     @user.destroy
 
     respond_to do |format|

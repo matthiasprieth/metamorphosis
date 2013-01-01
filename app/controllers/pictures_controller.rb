@@ -4,14 +4,17 @@ class PicturesController < ApplicationController
   # GET /pictures
   # GET /pictures.json
   def like
-    @picture = Picture.find(params[:like_id])
-    @user = User.find(@picture.user_id)
-    @picture.pic_likes = 0 if @picture.pic_likes.nil?
-    @picture.pic_likes += 1
-    @user.total_likes = 0 if @user.total_likes.nil?
-    @user.total_likes += 1
-    @picture.save
-    @user.save
+    if session[params[:like_id]].nil? #if is no session
+        session[params[:like_id]] = params[:like_id] #store picture_likes in a session
+        @picture = Picture.find(params[:like_id])
+        @user = User.find(@picture.user_id)
+        @picture.pic_likes = 0 if @picture.pic_likes.nil?
+        @picture.pic_likes += 1
+        @user.total_likes = 0 if @user.total_likes.nil?
+        @user.total_likes += 1
+        @picture.save
+        @user.save
+    end
   end
 
   def index

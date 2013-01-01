@@ -1,42 +1,22 @@
-/*body {
-  background-color: #fff;
-  color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+body{
+  min-width: 400px;
 }
 
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+.row{
+  padding-left: 4%;
 }
 
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
+.navpic{
+  padding: none;
 }
 
-a {
-  color: #000;
-  &:visited {
-    color: #666;
-  }
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
-}
-
-div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
-}
-*/
 .container-fluid{
   background-color: #F2F0F1;
+  min-height: 800px;
+}
+
+.container{
+  padding-bottom: none;
 }
 
 #notice {
@@ -85,4 +65,10 @@ div {
   margin-bottom: 0px;
 }
 
+.text .btn{
+  color: white;
+}
 
+a:hover{
+  background-color: transparent;
+}

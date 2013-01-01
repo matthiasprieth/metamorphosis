@@ -12,7 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :image %><br />
     <%= f.file_field :image %>
   </div>
 
@@ -38,6 +37,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Create Picture', :class => "btn btn-danger" %>
   </div>
 <% end %>

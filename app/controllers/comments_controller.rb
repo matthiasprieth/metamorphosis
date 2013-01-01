@@ -31,7 +31,6 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @comment }
-      format.js
     end
   end
 
@@ -57,8 +56,6 @@ class CommentsController < ApplicationController
 #  end
 
   def create
-    puts "2222222222222222222222222222222222222222222222222222222222222"
-    puts params[:comment][:picture_id]
     picture_id = params[:comment][:picture_id]
     @picture = Picture.find(picture_id)
     @comment = @picture.comments.build(params[:comment])
@@ -67,6 +64,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        format.js
         format.html { redirect_to root_url }
       else
         format.html { render :action => 'new' }
@@ -97,7 +95,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to comments_url }
+      format.html { redirect_to root_url }
       format.json { head :no_content }
     end
   end

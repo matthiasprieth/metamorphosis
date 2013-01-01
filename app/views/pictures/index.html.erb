@@ -5,11 +5,11 @@
           <div class="img-polaroid"><%= link_to image_tag(picture.image_url(:fixedWidth).to_s, :class => 'polaroid-images'), picture.image_url %></div>
           <div class="text">
             <div class="pic_creator">
-              <p>created by: <%= picture.user.username  %></p>
-              <%= link_to image_tag(picture.user.profil_pic_url.to_s), user_path(picture.user) %>
+              <p>created by: <%= link_to picture.user.username.split(' ').map {|w| w.capitalize }.join(' '), user_path(picture.user)  %></p>
+              <%= link_to image_tag(picture.user.profil_pic_url(:thumb).to_s), user_path(picture.user) %>
               <% if picture.parent %>
-                <p>modified by: <%= picture.user.username  %></p>
-                <%= link_to image_tag(Picture.find(picture.parent).user.profil_pic_url.to_s), user_path(picture.user) %>
+                <p>modified by: <%= link_to picture.user.username.split(' ').map {|w| w.capitalize }.join(' '), user_path(picture.user)  %></p>
+                <%= link_to image_tag(Picture.find(picture.parent).user.profil_pic_url(:thumb).to_s), user_path(picture.user) %>
               <% end %>
             </div>
             <div class="pic_name">
@@ -19,17 +19,19 @@
               <p>description: <%= picture.description %></p>
             </div>
             <div class="pic_likes">
-              <p>likes: <%= picture.pic_likes %></p>
+              <p>likes: <span class="badge badge-important"><%= picture.pic_likes %></span></p>
             </div>
-            <%= button_to "Download", picture.image_url, { :method => :get, :class => "btn btn-danger" } %>
-            <%= link_to "Start Challenge", new_picture_path(:challenge_picture => picture.id), :class => "btn btn-danger" %>
-            <%= link_to "like", root_url(:like_id => picture.id), { :class => "btn btn-primary"} %>
+            <%= button_to "Download", picture.image_url, { :method => :get, :class => "btn btn-mini btn-danger" } %>
+            <%= link_to "Start Challenge", new_picture_path(:challenge_picture => picture.id), :class => "btn btn-mini btn-danger" %>
+            <%= link_to "<i class='icon-thumbs-up'></i>".html_safe, root_url(:like_id => picture.id), { :method => :get, :class => "btn btn-mini btn-primary"} %>
+            <!--<div class="fb-like" data-send="true" data-layout="box_count" data-width="450" data-show-faces="true"></div>-->
 
-            <% @comments = Comment.where(:picture_id => picture.id) %>
-            <%= render :template => 'comments/index', :locals => { :commments => @comments }%>
-            <%= link_to "new comment", new_comment_path, id: "new_comment_button", remote: true %>
-            <% @picture_id = picture.id %>
-            <%= render :partial => 'comments/commentBox', :locals => { :picture_id => @picture_id} %>
+            <div id="ajaxComments<%= picture.id %>" class="ajaxComments">
+              <% @comments = Comment.where(:picture_id => picture.id) %>
+              <%= render :template => 'comments/index', :locals => { :commments => @comments }%>
+              <% @picture_id = picture.id %>
+              <%= render :partial => 'comments/form', :locals => { :picture_id => @picture_id} %>
+            </div>
           </div>
       </div>
     <% end %>
@@ -64,7 +66,6 @@
       </tr>
   <% end %>
 </table>
-
 <%= link_to 'New Picture', new_picture_path %>
 
 

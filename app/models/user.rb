@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   #from CarrierWave gem
   mount_uploader :profil_pic, ImageUploader
 
+  default_scope -> { order('total_likes DESC') } #users with most likes at the top
+
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user

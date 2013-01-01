@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+
+<%= image_tag(@user.profil_pic_url(:profil_big).to_s) %>
 <p>
   <b>Username:</b>
   <%= @user.username %>
@@ -30,6 +32,6 @@
   <%= @user.total_likes %>
 </p>
 
-
+<%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
