@@ -1,0 +1,5 @@
+<% picture_id = params[:comment][:picture_id] %>
+<% @comments = Comment.where(:picture_id => picture_id) %>
+$('#ajaxComments<%= picture_id %> table').remove();
+$('#ajaxComments<%= picture_id %>').prepend('<%= j render :template => 'comments/index', :locals => { :commments => @comments } %>');
+
