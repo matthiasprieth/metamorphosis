@@ -16,8 +16,9 @@ Devise.setup do |config|
   require 'devise/orm/active_record'
 
   require "omniauth-facebook"
-  config.omniauth :facebook, "315173175265453", "2645c64f28cbf8eef8a1078d16a795ff", :client_options => {
-  :ssl => { :ca_file => "#{Rails.root}/config/ca-bundle.crt" } }
+  config.omniauth :facebook, "315173175265453", "2645c64f28cbf8eef8a1078d16a795ff", {:scope => 'email,publish_stream',
+  :client_options => { :ssl => { :ca_file => "#{Rails.root}/config/ca-bundle.crt" } } }
+  # with scope i request some extra graph api options like publish_stream, wich allows me to print on users fb wall
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
