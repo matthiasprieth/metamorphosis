@@ -23,6 +23,7 @@
   margin-bottom: 1em;
   width: 360px;
   background: white;
+  box-shadow: 0 0 5px #777777;
 }
 
 .img-polaroid{
@@ -31,6 +32,8 @@
   width: 350px;
   float: left;
   margin-bottom: 2%;
+  border: #ffffff 1px solid;
+  box-shadow: none;
 }
 .img-polaroid td{
   margin: 20px;
@@ -96,7 +99,7 @@ figure {
   line-height: 20px;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   vertical-align: middle;
-  width: 344px;
+  width: 342px;
   padding: 3px;
   margin: 0;
 }
@@ -143,6 +146,14 @@ hr.hr-split{
   width: 98%;
   visibility: hidden;
 }
+hr.hr-split-visible {
+  clear: both;
+  float: none;
+  margin: 0 0 10px 0;
+  padding: 0;
+  width: 98%;
+  line-height: 0;
+}
 form.button_to {
   position: relative;
   width: 20%;
@@ -170,4 +181,15 @@ span.badge {
   position: absolute;
   right: 1%;
   height: 23px;
+}
+.ajaxComments {
+  padding: 0;
+  margin: 0;
+}
+#new_comment {
+  margin: 0;
+  padding: 0;
+}
+#user-pic-header {
+  padding: 5px;
 }

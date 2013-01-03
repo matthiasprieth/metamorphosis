@@ -4,7 +4,8 @@
 
 #prev_comments {
   width: 250px;
-  height: 30px;
+  height: 25px;
+  min-height: 25px;
 }
 
 .field textarea {
@@ -14,4 +15,8 @@
 
 .ajaxComments{
   margin-top: 10px;
+}
+.ajaxComments tr {
+	height: 25px;
+	line-height: 0;
 }
