@@ -27,9 +27,12 @@
                <hr class="hr-split">
               <% end %>
             </div>
-            <div class="pic_description">
-              <p>description: <%= picture.description %></p>
-            </div>
+            <% if picture.description? %>
+              <div class="pic_description">
+                <p>description: <%= picture.description %></p>
+              </div>
+            <% end %>
+            <hr class="hr-split-visible">
             <div id="ajaxComments<%= picture.id %>" class="ajaxComments">
               <% @comments = Comment.where(:picture_id => picture.id) %>
               <%= render :template => 'comments/index', :locals => { :commments => @comments }%>
