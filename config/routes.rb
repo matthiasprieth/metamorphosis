@@ -18,9 +18,6 @@ Metamorphosis::Application.routes.draw do
       resources :comments
     end
   end
-
-
-
   #resource :pictures do
   #  # Route GET /user/admin_login
   #  get 'like', :on => :collection

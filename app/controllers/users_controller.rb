@@ -44,7 +44,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     @user.total_likes = 0
-    @user.profil_pic ||= 'default_profil_pic.jpg'
 
     respond_to do |format|
       if @user.save
@@ -62,7 +61,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.total_likes = 0 if @user.total_likes.nil?
-    @user.profil_pic ||= 'default_profil_pic.jpg'
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
