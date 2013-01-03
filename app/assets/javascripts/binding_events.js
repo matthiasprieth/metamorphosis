@@ -4,9 +4,9 @@ $( window ).load( function()
         itemSelector: '.pin'
     });
 
-    $('.polaroid-images').adipoli({
-        'startEffect' : 'normal',
-        'hoverEffect' : 'popout'
+    $('.polaroid-images img').adipoli({
+        'startEffect' : 'overlay',
+        'hoverEffect' : 'normal'
     });
 });
 

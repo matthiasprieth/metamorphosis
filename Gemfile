@@ -35,6 +35,7 @@ gem 'carrierwave' #for uploading files, pictures and using 'rmagick' to modify p
 gem 'koala' # gem for using the facebook open graph api
 gem 'bootstrap-sass' #twitter-bootstrap for sass
 gem 'masonry-rails' #A dynamic layout plugin for jQuery
+gem 'rubylight' #A lightbox plugin for rails
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

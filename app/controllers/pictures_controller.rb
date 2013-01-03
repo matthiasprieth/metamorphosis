@@ -16,7 +16,6 @@ class PicturesController < ApplicationController
         @user.save
     end
   end
-
   def index
     like if params[:like_id]
     @pictures = Picture.all

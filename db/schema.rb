@@ -51,6 +51,11 @@ ActiveRecord::Schema.define(:version => 20121228193911) do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table "rewards_users", :id => false, :force => true do |t|
+    t.integer "users_id"
+    t.integer "rewards_id"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "password"
@@ -82,10 +87,5 @@ ActiveRecord::Schema.define(:version => 20121228193911) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "users_rewards", :id => false, :force => true do |t|
-    t.integer "users_id"
-    t.integer "rewards_id"
-  end
 
 end
