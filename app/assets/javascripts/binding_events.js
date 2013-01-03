@@ -5,8 +5,8 @@ $( window ).load( function()
     });
 
     $('.polaroid-images img').adipoli({
-        'startEffect' : 'normal',
-        'hoverEffect' : 'popout'
+        'startEffect' : 'overlay',
+        'hoverEffect' : 'normal'
     });
 });
 
