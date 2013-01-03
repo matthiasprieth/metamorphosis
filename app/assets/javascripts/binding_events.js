@@ -4,7 +4,7 @@ $( window ).load( function()
         itemSelector: '.pin'
     });
 
-    $('.polaroid-images').adipoli({
+    $('.polaroid-images img').adipoli({
         'startEffect' : 'normal',
         'hoverEffect' : 'popout'
     });

@@ -2,7 +2,9 @@
 <div id="masonry-container">
     <% @pictures.reverse_each do |picture| %>
       <div class="pin">
-          <div class="img-polaroid"><%= link_to image_tag(picture.image_url(:fixedWidth).to_s, :class => 'polaroid-images'), picture.image_url %></div>
+          <div class="img-polaroid">
+            <%= lightbox_tag(picture.image_url(:fixedWidth).to_s, picture.image_url, title=nil, collection=nil, html_options = {:class => 'polaroid-images'}) %>
+          </div>
           <div class="text">
             <div class="pic_creator">
               <p>created by: <%= link_to picture.user.username.split(' ').map {|w| w.capitalize }.join(' '), user_path(picture.user)  %></p>
