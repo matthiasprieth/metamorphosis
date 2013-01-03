@@ -7,8 +7,16 @@
               <%= lightbox_tag(picture.image_url(:fixedWidth).to_s, picture.image_url, title=picture.name, collection=nil, html_options = {:class => 'title-img'}) %>
               <figcaption class="pic_name"><%= picture.name %></figcaption>
             </figure>
+          <div class="pic_likes">
+            <%= button_to "Download", picture.image_url, { :method => :get, :class => "btn btn-mini btn-danger" } %>
+            <%= link_to "Start Challenge", new_picture_path(:challenge_picture => picture.id), :class => "start-challenge btn btn-mini btn-info" %>
+           <span class="badge badge-important"><%= picture.pic_likes %></span>
+           <%= link_to "<i class='icon-thumbs-up'></i>".html_safe, root_url(:like_id => picture.id), { :method => :get, :class => "btn btn-mini btn-like"} %>
+          </div>
+            <hr class="hr-split">
+            <!--<div class="fb-like" data-send="true" data-layout="box_count" data-width="450" data-show-faces="true"></div>-->
          </div>
-          <div class="text">
+         <div class="text">
             <div class="pic_creator">
               <%= link_to image_tag(picture.user.profil_pic_url(:thumb).to_s), user_path(picture.user), :class => 'user-img' %>
               <p><%= link_to picture.user.username.split(' ').map {|w| w.capitalize }.join(' '), user_path(picture.user)  %> created this picture.</p>
@@ -22,16 +30,6 @@
             <div class="pic_description">
               <p>description: <%= picture.description %></p>
             </div>
-
-            <div class="pic_likes">
-            <%= button_to "Download", picture.image_url, { :method => :get, :class => "btn btn-mini btn-danger" } %>
-            <%= link_to "Start Challenge", new_picture_path(:challenge_picture => picture.id), :class => "start-challenge btn btn-mini btn-info" %>
-           <span class="badge badge-important"><%= picture.pic_likes %></span>
-           <%= link_to "<i class='icon-thumbs-up'></i>".html_safe, root_url(:like_id => picture.id), { :method => :get, :class => "btn btn-mini btn-like"} %>
-          </div>
-            <hr class="hr-split">
-            <!--<div class="fb-like" data-send="true" data-layout="box_count" data-width="450" data-show-faces="true"></div>-->
-
             <div id="ajaxComments<%= picture.id %>" class="ajaxComments">
               <% @comments = Comment.where(:picture_id => picture.id) %>
               <%= render :template => 'comments/index', :locals => { :commments => @comments }%>

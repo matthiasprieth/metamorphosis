@@ -50,14 +50,12 @@
 }
 
 .pic_name{
-  position: absolute;
-  bottom: 9px;
-  left: 4px;
-  z-index: 999;
+  position: relative;
   text-align: center;
+  margin-top: -5px;
   width: 350px;
   padding: 5px 0;
-  opacity: 0.7;
+  opacity: 0.95;
   background:#000000;
   color:#eeeeee;
   text-shadow: -1px -1px 0px #101010;  
@@ -98,8 +96,8 @@ figure {
   line-height: 20px;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   vertical-align: middle;
-  width: 96%;
-  padding: 1%;
+  width: 344px;
+  padding: 3px;
   margin: 0;
 }
 
