@@ -9,18 +9,21 @@
         <td>email</td>
         <td>profil-description</td>
         <td>show</td>
-        <td>edit</td>
 
       </tr>
     <% @users.each do |user| %>
       <tr>
-        <td><%= link_to image_tag(user.profil_pic_url(:thumb).to_s), user_path(user) %></td>
+        <td><% if user.profil_pic.present? %>
+            <%= link_to image_tag(user.profil_pic_url(:thumb).to_s), user_path(user) %>
+            <% else %>
+            <%= link_to image_tag('default_profil_pic.jpg'), user_path(user), :id => 'user-pic-header' %>
+            <% end %>
+        </td>
         <td><%= user.username.split(' ').map {|w| w.capitalize }.join(' ') %></td>
         <td><span class="badge badge-important"><%= user.total_likes %></span></td>
         <td><%= user.email %></td>
         <td><%= user.description %></td>
         <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_registration_path %></td>
       </tr>
     <% end %>
     </table>

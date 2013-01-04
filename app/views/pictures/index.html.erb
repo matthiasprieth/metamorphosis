@@ -4,14 +4,16 @@
       <div class="pin">
           <div class="img-polaroid">
             <figure class="polaroid-images">
-              <%= lightbox_tag(picture.image_url(:fixedWidth).to_s, picture.image_url, title=picture.name, collection=nil, html_options = {:class => 'title-img'}) %>
+               <%= link_to image_tag(picture.image_url(:fixedWidth).to_s), picture.image_url, :class => 'title-img', :rel => 'lightbox[gallery1]', :title => picture.name %>
               <figcaption class="pic_name"><%= picture.name %></figcaption>
             </figure>
           <div class="pic_likes">
             <%= button_to "Download", picture.image_url, { :method => :get, :class => "btn btn-mini btn-danger" } %>
             <%= link_to "Start Challenge", new_picture_path(:challenge_picture => picture.id), :class => "start-challenge btn btn-mini btn-info" %>
            <span class="badge badge-important"><%= picture.pic_likes %></span>
+           <% if user_signed_in? %>
            <%= link_to "<i class='icon-thumbs-up'></i>".html_safe, root_url(:like_id => picture.id), { :method => :get, :class => "btn btn-mini btn-like"} %>
+           <% end %>
           </div>
             <hr class="hr-split">
             <!--<div class="fb-like" data-send="true" data-layout="box_count" data-width="450" data-show-faces="true"></div>-->
@@ -37,7 +39,9 @@
               <% @comments = Comment.where(:picture_id => picture.id) %>
               <%= render :template => 'comments/index', :locals => { :commments => @comments }%>
               <% @picture_id = picture.id %>
+              <% if user_signed_in? %>
               <%= render :partial => 'comments/form', :locals => { :picture_id => @picture_id} %>
+              <% end %>
             </div>
           </div>
       </div>
@@ -74,5 +78,3 @@
   <% end %>
 </table>
 <%= link_to 'New Picture', new_picture_path %>
-
-
