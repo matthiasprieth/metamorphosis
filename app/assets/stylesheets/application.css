@@ -16,7 +16,6 @@
  *= require 'masonry/infinitescroll'
  *= require 'masonry/right-to-left'
  *= require 'masonry/transitions'
- *= require lightbox
  *= require_tree .
  */
 

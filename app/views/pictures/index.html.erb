@@ -4,7 +4,7 @@
       <div class="pin">
           <div class="img-polaroid">
             <figure class="polaroid-images">
-              <%= lightbox_tag(picture.image_url(:fixedWidth).to_s, picture.image_url, title=picture.name, collection=nil, html_options = {:class => 'title-img'}) %>
+               <%= link_to image_tag(picture.image_url(:fixedWidth).to_s), picture.image_url, :class => 'title-img', :rel => 'lightbox[gallery1]', :title => picture.name %>
               <figcaption class="pic_name"><%= picture.name %></figcaption>
             </figure>
           <div class="pic_likes">
