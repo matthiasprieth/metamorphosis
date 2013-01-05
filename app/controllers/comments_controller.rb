@@ -1,8 +1,17 @@
 class CommentsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :user_is_creator, only: [:edit, :update, :destroy]
 
   # GET /comments
   # GET /comments.json
+  private
+  def user_is_creator
+    @comment = Comment.find(params[:id])
+    unless current_user == @comment.user
+      redirect_to root_url
+    end
+  end
+
   def index
     @comments = Comment.all
 
