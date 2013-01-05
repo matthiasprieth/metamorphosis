@@ -1,6 +1,6 @@
 <h1 id="title" class="brand" xmlns="http://www.w3.org/1999/html">Metamorphosis</h1>
 <div id="masonry-container">
-    <% @pictures.reverse_each do |picture| %>
+    <% @pictures.sort_by{|e| e.pic_likes}.reverse_each do |picture| %>
       <div class="pin">
           <div class="img-polaroid">
             <figure class="polaroid-images">
@@ -20,7 +20,11 @@
          </div>
          <div class="text">
             <div class="pic_creator">
-              <%= link_to image_tag(picture.user.profil_pic_url(:thumb).to_s), user_path(picture.user), :class => 'user-img' %>
+              <% if picture.user.profil_pic.present? %>
+                <%= link_to image_tag(picture.user.profil_pic_url(:thumb).to_s), user_path(picture.user), :class => 'user-img' %>
+              <% else %>
+                <%= link_to image_tag('default_profil_pic.jpg'), user_path(picture.user), :class => 'user-img' %>
+              <% end %>
               <p><%= link_to picture.user.username.split(' ').map {|w| w.capitalize }.join(' '), user_path(picture.user)  %> created this picture.</p>
               <hr class="hr-split">
               <% if picture.parent %>

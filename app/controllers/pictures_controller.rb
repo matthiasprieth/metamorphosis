@@ -73,7 +73,7 @@ class PicturesController < ApplicationController
   # POST /pictures.json
   def create
     @picture = Picture.new(params[:picture])
-    @picture.user_id = current_user
+    @picture.user_id = current_user.id
     @picture.parent = $challenge_picture_id
     @picture.pic_likes = 0
 
