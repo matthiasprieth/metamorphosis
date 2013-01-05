@@ -10,7 +10,7 @@
         <% end %></td>
     <td><%= text_area_tag 'prev_comments', comment.comment, :disabled => 'disabled' %></td>
 
-
+    <% if user_signed_in? && current_user == comment.user %>
     <td>
       <%= link_to edit_comment_path(comment) do %>
         <i class="icon-pencil"></i>
@@ -21,6 +21,7 @@
         <i class="icon-remove"></i>
       <% end %>
     </td>
+    <% end %>
   </tr>
 <% end %>
 </table>
