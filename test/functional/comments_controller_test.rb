@@ -2,13 +2,8 @@ require 'test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
   setup do
-    @comment = comments(:one)
-  end
-
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:comments)
+    @comment = comments(:cone)
+    sign_in users(:uone)
   end
 
   test "should get new" do
@@ -18,10 +13,10 @@ class CommentsControllerTest < ActionController::TestCase
 
   test "should create comment" do
     assert_difference('Comment.count') do
-      post :create, comment: { picture_id: @comment.picture_id, text: @comment.text, user_id: @comment.user_id }
+      post :create, comment: { picture_id: pictures(:pone), user_id: @comment.user_id, comment: @comment.comment }
     end
 
-    assert_redirected_to comment_path(assigns(:comment))
+    assert_redirected_to root_url
   end
 
   test "should show comment" do
@@ -35,7 +30,7 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   test "should update comment" do
-    put :update, id: @comment, comment: { picture_id: @comment.picture_id, text: @comment.text, user_id: @comment.user_id }
+    put :update, id: @comment, comment: { picture_id: @comment.picture_id, comment: @comment.comment, user_id: @comment.user_id }
     assert_redirected_to comment_path(assigns(:comment))
   end
 
@@ -44,6 +39,6 @@ class CommentsControllerTest < ActionController::TestCase
       delete :destroy, id: @comment
     end
 
-    assert_redirected_to comments_path
+    assert_redirected_to root_url
   end
 end

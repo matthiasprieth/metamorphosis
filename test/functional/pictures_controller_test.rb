@@ -2,8 +2,9 @@ require 'test_helper'
 
 class PicturesControllerTest < ActionController::TestCase
   setup do
-    @picture = pictures(:one)
-  end
+    @picture = pictures(:pone)
+    sign_in users(:uone)
+ end
 
   test "should get index" do
     get :index

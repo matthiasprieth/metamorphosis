@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  firstname: MyString
-  lastname: MyString
+uone:
+  username: MyString
   password: MyString
   salt: MyString
   email: MyString
   description: MyText
+  confirmed_at: <%= Time.now %>
 
-two:
-  firstname: MyString
-  lastname: MyString
+utwo:
+  username: MyString2
   password: MyString
   salt: MyString
-  email: MyString
+  email: MyString2
   description: MyText
+  confirmed_at: <%= Time.now %>
