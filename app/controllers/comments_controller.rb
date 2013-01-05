@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
 
   # GET /comments
   # GET /comments.json
-  private
   def user_is_creator
     @comment = Comment.find(params[:id])
     unless current_user == @comment.user

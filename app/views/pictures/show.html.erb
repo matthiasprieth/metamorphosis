@@ -1,11 +1,37 @@
 <p id="notice"><%= notice %></p>
 
 <!--<div class="cssThumb">-->
-<b>this is the <i>thumb</i> version uploaded with <i>carrierwace</i> and modified with <i>rmagick</i>:</b></br>
-<%= image_tag @picture.image_url(:thumb).to_s %>
+<div class="span4">
+<figure class="single-image-view">
+   <%= link_to image_tag(@picture.image_url(:fixedWidth).to_s), @picture.image_url, :class => 'title-img', :rel => 'lightbox', :title => @picture.name %>
+</figure>
+<div class="pic_likes">
+  <%= link_to("Download", options = {:controller => :pictures, :action => :download, :id => @picture.id}, html_options = {:class => "start-challenge btn btn-mini btn-danger"}) %>
+  <%= link_to "Start Challenge", new_picture_path(:challenge_picture => @picture.id), :class => "start-challenge btn btn-mini btn-info" %>
+   <%= link_to "Details", picture_path(:id => @picture.id), :class => "start-challenge btn btn-mini" %>
+ <div class="likes">
+    <span class="badge badge-important number-likes"><%= @picture.pic_likes %></span>
+   <% if user_signed_in? %>
+   <%= link_to "<i class='icon-thumbs-up'></i>".html_safe, root_url(:like_id => @picture.id), { :method => :get, :class => "btn btn-mini btn-like"} %>
+   <% end %>
+ </div>
+</div>
+  <hr class="hr-split">
+
 </br>
 <!--</div>-->
+<p><b>Comments:</b></p>
+<div id="ajaxComments<%= @picture.id %>" class="ajaxComments">
+  <% @comments = Comment.where(:picture_id => @picture.id) %>
+  <%= render :template => 'comments/index', :locals => { :commments => @comments }%>
+  <% @picture_id = @picture.id %>
+  <% if user_signed_in? %>
+  <%= render :partial => 'comments/form', :locals => { :picture_id => @picture_id} %>
+  <% end %>
+</div>
 
+</div>
+<div class="span5">
 <p>
   <b>Name:</b>
   <%= @picture.name %>
@@ -37,14 +63,12 @@
 </p>
 
 <p>
-  <b>User:</b>
-  <%= @picture.user_id %>
+  <b>Creator:</b>
+  <%= link_to @picture.user.username.split(' ').map {|w| w.capitalize }.join(' '), user_path(@picture.user)  %>
 </p>
 
 <p>
   <b>Picture-likes:</b>
   <%= @picture.pic_likes %>
 </p>
-
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
-<%= link_to 'Back', pictures_path %>
+</div>

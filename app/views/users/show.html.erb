@@ -31,7 +31,7 @@
 
 <%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', users_path %>
-
+<br>
 <div id="masonry-container">
     <% @user.pictures.sort_by{|e| e.pic_likes}.reverse_each do |picture| %>
       <div class="pin">
@@ -43,10 +43,13 @@
           <div class="pic_likes">
             <%= link_to("Download", options = {:controller => :pictures, :action => :download, :id => picture.id}, html_options = {:class => "start-challenge btn btn-mini btn-danger"}) %>
             <%= link_to "Start Challenge", new_picture_path(:challenge_picture => picture.id), :class => "start-challenge btn btn-mini btn-info" %>
-           <span class="badge badge-important"><%= picture.pic_likes %></span>
-           <% if user_signed_in? %>
-           <%= link_to "<i class='icon-thumbs-up'></i>".html_safe, root_url(:like_id => picture.id), { :method => :get, :class => "btn btn-mini btn-like"} %>
-           <% end %>
+             <%= link_to "Details", picture_path(:id => picture.id), :class => "start-challenge btn btn-mini" %>
+           <div class="likes">
+              <span class="badge badge-important number-likes"><%= picture.pic_likes %></span>
+             <% if user_signed_in? %>
+             <%= link_to "<i class='icon-thumbs-up'></i>".html_safe, root_url(:like_id => picture.id), { :method => :get, :class => "btn btn-mini btn-like"} %>
+             <% end %>
+           </div>
           </div>
             <hr class="hr-split">
             <!--<div class="fb-like" data-send="true" data-layout="box_count" data-width="450" data-show-faces="true"></div>-->
