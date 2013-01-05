@@ -41,7 +41,11 @@ class PicturesController < ApplicationController
   # GET /pictures/1.json
   def show
     @picture = Picture.find(params[:id])
+    @children = Picture.find(:all, :conditions => {:parent => @picture.id})
 
+    if @picture.parent
+      @parent = Picture.find(@picture.parent)
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @picture }

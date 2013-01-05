@@ -5,7 +5,9 @@
 <% else %>
   <%= image_tag('default_profil_pic.jpg') %>
 <% end %>
+<% if user_signed_in? %>
 <%= link_to 'Delete Account', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
 <p>
   <b>Username:</b>
   <%= @user.username %>
