@@ -39,33 +39,24 @@
   <b>Name:</b>
   <%= @picture.name %>
 </p>
-
+<% if @picture.description %>
 <p>
   <b>Description:</b>
   <%= @picture.description %>
 </p>
-
-<p>
-  <b>Type:</b>
-  <%= @picture.type %>
-</p>
+<% end %>
 <% if @parent %>
 <p>
   <b>Parent:</b>
   <%= link_to @parent.name, picture_path(@picture.parent)  %>
 </p>
 <% end %>
-
+<% if @picture.gallery != "" %>
 <p>
   <b>Gallery:</b>
   <%= @picture.gallery %>
 </p>
-
-<p>
-  <b>Rating:</b>
-  <%= @picture.rating %>
-</p>
-
+<% end %>
 <p>
   <b>Creator:</b>
   <%= link_to @picture.user.username.split(' ').map {|w| w.capitalize }.join(' '), user_path(@picture.user)  %>
