@@ -2,7 +2,9 @@
 
 <!--<div class="cssThumb">-->
 <div class="span4">
-<figure class="single-image-view">
+<div class="pin">
+  <div class="img-polaroid">
+<figure class="single-image-view polaroid-images">
    <%= link_to image_tag(@picture.image_url(:fixedWidth).to_s), @picture.image_url, :class => 'title-img', :rel => 'lightbox', :title => @picture.name %>
 </figure>
 <div class="pic_likes">
@@ -16,11 +18,11 @@
    <% end %>
  </div>
 </div>
-  <hr class="hr-split">
-
-</br>
+</div>
 <!--</div>-->
-<p><b>Comments:</b></p>
+<div class="text">
+<hr class="hr-split-visible">
+  <p><b>Comments:</b></p>
 <div id="ajaxComments<%= @picture.id %>" class="ajaxComments">
   <% @comments = Comment.where(:picture_id => @picture.id) %>
   <%= render :template => 'comments/index', :locals => { :commments => @comments }%>
@@ -29,7 +31,8 @@
   <%= render :partial => 'comments/form', :locals => { :picture_id => @picture_id} %>
   <% end %>
 </div>
-
+</div>
+</div>
 </div>
 <div class="span5">
 <p>

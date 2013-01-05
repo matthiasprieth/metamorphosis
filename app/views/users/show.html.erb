@@ -5,6 +5,7 @@
 <% else %>
   <%= image_tag('default_profil_pic.jpg') %>
 <% end %>
+<%= link_to 'Delete Account', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
 <p>
   <b>Username:</b>
   <%= @user.username %>
@@ -28,10 +29,7 @@
     <%= @user.total_likes %>
   <% end %>
 </p>
-
-<%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'Back', users_path %>
-<br>
+<p><b>Pictures created:</b></p>
 <div id="masonry-container">
     <% @user.pictures.sort_by{|e| e.pic_likes}.reverse_each do |picture| %>
       <div class="pin">

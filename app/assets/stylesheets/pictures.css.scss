@@ -31,7 +31,9 @@ figure {
   background: white;
   box-shadow: 0 0 5px #777777;
 }
-
+.pin-padding {
+  padding: 2%;
+}
 .img-polaroid{
   position: relative;
   float: left;
@@ -202,12 +204,4 @@ a.start-challenge {
 }
 #user-pic-header {
   padding: 5px;
-}
-.single-image-view {
-    box-shadow: 0 0 5px #777777;
-    width: 350px;
-}
-.single-image-view:hover {
-    box-shadow: 0 0 15px #CD4640;
-    width: 350px;
 }
