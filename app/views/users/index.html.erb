@@ -20,7 +20,15 @@
             <% end %>
         </td>
         <td><%= user.username.split(' ').map {|w| w.capitalize }.join(' ') %></td>
-        <td><span class="badge badge-important"><%= user.total_likes %></span></td>
+        <td>
+          <span class="badge badge-important">
+            <%if user.total_likes.nil? %>
+              0
+            <% else %>
+              <%= user.total_likes %>
+            <% end %>
+          </span>
+        </td>
         <td><%= user.email %></td>
         <td><%= user.description %></td>
         <td><%= link_to 'Show', user %></td>
@@ -31,4 +39,4 @@
 
 <br />
 
-<%= link_to 'New User', new_user_path %>
+<%-# link_to 'New User', new_user_path -%>

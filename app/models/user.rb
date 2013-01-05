@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
   attr_accessible :oauth_token, :oauth_expires_at
   has_many :pictures
   has_many :comments
-  has_and_belongs_to_many :rewards
+  #maybe implemented in the future
+  #has_and_belongs_to_many :rewards
   validates_presence_of :username
 
   #from CarrierWave gem

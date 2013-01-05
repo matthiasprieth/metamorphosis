@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :correct_user,  :only => [:edit, :update, :destroy]
+
+  def correct_user
+    @user = User.find(params[:id])
+    if current_user != @user
+      redirect_to root_url, :notice => "You are not the owner of this account."
+    end
+  end
 
   # GET /users
   # GET /users.json
