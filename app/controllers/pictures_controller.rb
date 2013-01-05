@@ -1,8 +1,18 @@
 class PicturesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
-
+  
+  require 'mime/types'
   # GET /pictures
   # GET /pictures.json
+  def download
+    @picture = Picture.find(params[:id])
+    file = @picture.image.path
+    extension = @picture.image.file.extension.downcase
+    disposition = 'attachment'
+    mime = MIME::Types.type_for(file).first.content_type
+    
+    send_file file, :type => mime, :disposition => disposition
+  end
   def like
     if session[params[:like_id]].nil? #if is no session
         session[params[:like_id]] = params[:like_id] #store picture_likes in a session

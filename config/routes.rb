@@ -10,6 +10,9 @@ Metamorphosis::Application.routes.draw do
 
   resources :pictures do
     resources :comments
+    member do
+      get 'download'
+    end
   end
 
   resources :users do

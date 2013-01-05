@@ -8,7 +8,7 @@
               <figcaption class="pic_name"><%= picture.name %></figcaption>
             </figure>
           <div class="pic_likes">
-            <%= button_to "Download", picture.image_url, { :method => :get, :class => "btn btn-mini btn-danger" } %>
+            <%= link_to("Download", options = {:action => :download, :id => picture.id}, html_options = {:class => "start-challenge btn btn-mini btn-danger"}) %>
             <%= link_to "Start Challenge", new_picture_path(:challenge_picture => picture.id), :class => "start-challenge btn btn-mini btn-info" %>
            <span class="badge badge-important"><%= picture.pic_likes %></span>
            <% if user_signed_in? %>
