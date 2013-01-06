@@ -17,8 +17,8 @@ class PicturesController < ApplicationController
     if session[params[:like_id]].nil? #if is no session
         current_user.likePicWall(params[:like_id])
         session[params[:like_id]] = params[:like_id] #store picture_likes in a session
-        @picture = Picture.find(params[:like_id])
-        @user = User.find(@picture.user_id)
+        @picture = Picture.find_by_id(params[:like_id])
+        @user = User.find_by_id(@picture.user_id)
         @picture.pic_likes = 0 if @picture.pic_likes.nil?
         @picture.pic_likes += 1
         @user.total_likes = 0 if @user.total_likes.nil?
@@ -45,7 +45,7 @@ class PicturesController < ApplicationController
     @children = Picture.find(:all, :conditions => {:parent => @picture.id})
 
     if @picture.parent
-      @parent = Picture.find(@picture.parent)
+      @parent = Picture.find_by_id(@picture.parent)
     end
     respond_to do |format|
       format.html # show.html.erb
@@ -122,7 +122,7 @@ class PicturesController < ApplicationController
 
 
     respond_to do |format|
-      format.html { redirect_to pictures_url }
+      format.html { redirect_to root_url }
       format.json { head :no_content }
     end
   end

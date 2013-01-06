@@ -11,7 +11,7 @@
             <%= link_to("Download", options = {:controller => :pictures, :action => :download, :id => picture.id}, html_options = {:class => "start-challenge btn btn-mini btn-danger"}) %>
             <%= link_to "Start Challenge", new_picture_path(:challenge_picture => picture.id), :class => "start-challenge btn btn-mini btn-info" %>
              <%= link_to "Details", picture_path(:id => picture.id), :class => "start-challenge btn btn-mini" %>
-           <div class="likes">
+            <div class="likes">
               <span class="badge badge-important number-likes"><%= picture.pic_likes %></span>
              <% if user_signed_in? %>
              <%= link_to "<i class='icon-thumbs-up'></i>".html_safe, root_url(:like_id => picture.id), { :method => :post, :class => "btn btn-mini btn-like"} %>
@@ -19,11 +19,9 @@
            </div>
           </div>
           <!--fb_like-->
-          <div class="fb-like" data-href="<%= request.env['HTTP_HOST']+'/pictures/'+picture.id.to_s %>" data-send="true" data-layout="button_count" data-width="360" data-show-faces="true"></div>
-            <hr class="hr-split">
+          <div class="fb-like" data-href="<%= request.env['HTTP_HOST']+'/pictures/'+picture.id.to_s %>" data-send="true" data-layout="button_count" data-width="20" data-show-faces="true">LIKE</div>
+         <hr class="hr-split">
          </div>
-        <!--fb_comment-->
-        <div class="fb-comments" href="<%= request.env['HTTP_HOST']+'/pictures/'+picture.id.to_s %>" data-width="360" data-num-posts="1"></div>
          <div class="text">
             <div class="pic_creator">
               <% if picture.user.profil_pic.present? %>
@@ -33,8 +31,8 @@
               <% end %>
               <p><%= link_to picture.user.username.split(' ').map {|w| w.capitalize }.join(' '), user_path(picture.user)  %> created this picture.</p>
               <hr class="hr-split">
-              <% if picture.parent %>
-                <%= link_to image_tag(Picture.find(picture.parent).user.profil_pic_url(:thumb).to_s), user_path(picture.user), :class => 'user-img' %>
+              <% if picture.parent && Picture.find_by_id(picture.parent) %>
+                <%= link_to image_tag(Picture.find_by_id(picture.parent).user.profil_pic_url(:thumb).to_s), user_path(picture.user), :class => 'user-img' %>
                 <p><%= link_to picture.user.username.split(' ').map {|w| w.capitalize }.join(' '), user_path(picture.user)  %> modified it.</p>
                <hr class="hr-split">
               <% end %>
@@ -45,6 +43,8 @@
               </div>
             <% end %>
             <hr class="hr-split-visible">
+            <!--fb_comment-->
+            <div class="fb-comments" href="<%= request.env['HTTP_HOST']+'/pictures/'+picture.id.to_s %>" data-width="345" data-num-posts="1"></div>
             <div id="ajaxComments<%= picture.id %>" class="ajaxComments">
               <% @comments = Comment.where(:picture_id => picture.id) %>
               <%= render :template => 'comments/index', :locals => { :commments => @comments }%>
@@ -53,38 +53,8 @@
               <%= render :partial => 'comments/form', :locals => { :picture_id => @picture_id} %>
               <% end %>
             </div>
+            <hr class="hr-split">
           </div>
       </div>
     <% end %>
 </div>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Type</th>
-    <th>Parent</th>
-    <th>Gallery</th>
-    <th>Rating</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-  <% @pictures.each do |picture| %>
-      <tr>
-        <td><%= picture.name %></td>
-        <td><%= picture.description %></td>
-        <td><%= picture.type %></td>
-        <td><%= picture.parent %></td>
-        <td><%= picture.gallery %></td>
-        <td><%= picture.rating %></td>
-        <td><%= picture.user_id %></td>
-        <td><%= link_to 'Show', picture %></td>
-        <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-        <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  <% end %>
-</table>
-<%= link_to 'New Picture', new_picture_path %>

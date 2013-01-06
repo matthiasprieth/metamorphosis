@@ -48,7 +48,9 @@
 <% if @parent %>
 <p>
   <b>Parent:</b>
+  <% if @parent %>
   <%= link_to @parent.name, picture_path(@picture.parent)  %>
+  <% end %>
 </p>
 <% end %>
 <% if @picture.gallery != "" %>
@@ -66,7 +68,10 @@
   <b>Picture-likes:</b>
   <%= @picture.pic_likes %>
 </p>
-  <!--fb_like-->
+ <p>
+  <b><%= link_to 'Bild löschen', @picture, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></b>
+</p>
+ <!--fb_like-->
   <div class="fb-like" data-href="<%= request.url %>" data-send="true" data-layout="button_count" data-width="360" data-show-faces="true"></div>
   <!--fb_comment-->
   </br>
