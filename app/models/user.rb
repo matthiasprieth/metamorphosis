@@ -60,9 +60,9 @@ class User < ActiveRecord::Base
         :caption => "Hey guys! Iv'e liked a picture on Metamorphosis!",
         :picture => picture.image_url
     )
-  #rescue Koala::Facebook::APIError => e
-  #  logger.info e.to_s
-  #  nil
+  rescue Koala::Facebook::APIError => e
+    logger.info e.to_s
+    nil
   end
 
   def createPicWall
@@ -72,8 +72,8 @@ class User < ActiveRecord::Base
         :link => 'http://metamorphosis.mediacube.at/pictures/1/',
         :caption => "Hey guys! Iv'e liked a picture on Metamorphosis!"
     )
-  #rescue Koala::Facebook::APIError => e
-  #  logger.info e.to_s
-  #  nil
+  rescue Koala::Facebook::APIError => e
+    logger.info e.to_s
+    nil
   end
 end
