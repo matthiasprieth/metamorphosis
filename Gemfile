@@ -30,7 +30,7 @@ group :production do
   gem 'mysql2'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '2.1.4'
 gem 'capistrano' #for deploying
 gem 'devise' #login gem
 gem 'omniauth'

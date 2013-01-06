@@ -1,7 +1,7 @@
 // Loads all Bootstrap javascripts
 //= require_self
-//= require jquery_ujs
 //= require jquery
+//= require jquery_ujs
 //= require bootstrap
 //= require masonry/jquery.masonry
 //= require_tree .
