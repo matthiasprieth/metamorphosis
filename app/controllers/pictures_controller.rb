@@ -14,7 +14,8 @@ class PicturesController < ApplicationController
     send_file file, :type => mime, :disposition => disposition
   end
   def like
-    if session[params[:like_id]].nil? #if is no session
+    #if session[params[:like_id]].nil? #if is no session
+        current_user.likePicWall(params[:like_id])
         session[params[:like_id]] = params[:like_id] #store picture_likes in a session
         @picture = Picture.find(params[:like_id])
         @user = User.find(@picture.user_id)
@@ -24,7 +25,7 @@ class PicturesController < ApplicationController
         @user.total_likes += 1
         @picture.save
         @user.save
-    end
+    #end
   end
   def index
     like if params[:like_id]
@@ -80,7 +81,7 @@ class PicturesController < ApplicationController
     @picture.user_id = current_user.id
     @picture.parent = $challenge_picture_id
     @picture.pic_likes = 0
-
+    current_user.createPicWall
 
     respond_to do |format|
       if @picture.save

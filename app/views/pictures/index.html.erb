@@ -14,13 +14,16 @@
            <div class="likes">
               <span class="badge badge-important number-likes"><%= picture.pic_likes %></span>
              <% if user_signed_in? %>
-             <%= link_to "<i class='icon-thumbs-up'></i>".html_safe, root_url(:like_id => picture.id), { :method => :get, :class => "btn btn-mini btn-like"} %>
+             <%= link_to "<i class='icon-thumbs-up'></i>".html_safe, root_url(:like_id => picture.id), { :method => :post, :class => "btn btn-mini btn-like"} %>
              <% end %>
            </div>
           </div>
+          <!--fb_like-->
+          <div class="fb-like" data-href="<%= request.env['HTTP_HOST']+'/pictures/'+picture.id.to_s %>" data-send="true" data-layout="button_count" data-width="360" data-show-faces="true"></div>
             <hr class="hr-split">
-            <!--<div class="fb-like" data-send="true" data-layout="box_count" data-width="450" data-show-faces="true"></div>-->
          </div>
+        <!--fb_comment-->
+        <div class="fb-comments" href="<%= request.env['HTTP_HOST']+'/pictures/'+picture.id.to_s %>" data-width="360" data-num-posts="1"></div>
          <div class="text">
             <div class="pic_creator">
               <% if picture.user.profil_pic.present? %>

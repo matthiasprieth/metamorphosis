@@ -45,7 +45,35 @@ class User < ActiveRecord::Base
     @facebook ||= Koala::Facebook::API.new(oauth_token)
   end
 
+  #just for testing
   def getLink
     facebook.get_object("me")
+  end
+
+  def likePicWall(like_id)
+    picture=Picture.find(like_id)
+    puts picture.image_url
+    facebook.put_wall_post(
+        "likes a picture on Metamorphosis",
+        :name => "Metamorphosis",
+        :link => 'http://metamorphosis.mediacube.at/pictures/'+like_id+'/',
+        :caption => "Hey guys! Iv'e liked a picture on Metamorphosis!",
+        :picture => picture.image_url
+    )
+  #rescue Koala::Facebook::APIError => e
+  #  logger.info e.to_s
+  #  nil
+  end
+
+  def createPicWall
+    facebook.put_wall_post(
+        "created a picture on Metamorphosis",
+        :name => "Metamorphosis",
+        :link => 'http://metamorphosis.mediacube.at/pictures/1/',
+        :caption => "Hey guys! Iv'e liked a picture on Metamorphosis!"
+    )
+  #rescue Koala::Facebook::APIError => e
+  #  logger.info e.to_s
+  #  nil
   end
 end

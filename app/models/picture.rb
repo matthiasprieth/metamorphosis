@@ -5,4 +5,5 @@ class Picture < ActiveRecord::Base
 	#validates :name, :presence => true
 	#from CarrierWave gem
 	mount_uploader :image, ImageUploader
+
 end
