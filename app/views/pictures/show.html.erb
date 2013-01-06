@@ -32,6 +32,7 @@
   <% end %>
 </div>
 </div>
+<hr class="hr-split">
 </div>
 </div>
 <div class="span6">
@@ -69,7 +70,7 @@
   <%= @picture.pic_likes %>
 </p>
  <p>
-  <b><%= link_to 'Bild löschen', @picture, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></b>
+  <%= link_to 'Bild löschen', @picture, method: :delete, data: { confirm: 'Sind Sie sicher?' } %>
 </p>
  <!--fb_like-->
   <div class="fb-like" data-href="<%= request.url %>" data-send="true" data-layout="button_count" data-width="360" data-show-faces="true"></div>

@@ -44,7 +44,7 @@
             <% end %>
             <hr class="hr-split-visible">
             <!--fb_comment-->
-            <div class="fb-comments" href="<%= request.env['HTTP_HOST']+'/pictures/'+picture.id.to_s %>" data-width="345" data-num-posts="1"></div>
+            <!--<div class="fb-comments" href="<%#= request.env['HTTP_HOST']+'/pictures/'+picture.id.to_s %>" data-width="345" data-num-posts="1"></div>-->
             <div id="ajaxComments<%= picture.id %>" class="ajaxComments">
               <% @comments = Comment.where(:picture_id => picture.id) %>
               <%= render :template => 'comments/index', :locals => { :commments => @comments }%>
@@ -53,8 +53,8 @@
               <%= render :partial => 'comments/form', :locals => { :picture_id => @picture_id} %>
               <% end %>
             </div>
-            <hr class="hr-split">
           </div>
+          <hr class="hr-split">
       </div>
     <% end %>
 </div>

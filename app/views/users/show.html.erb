@@ -63,8 +63,8 @@
               <% end %>
               <p><%= link_to picture.user.username.split(' ').map {|w| w.capitalize }.join(' '), user_path(picture.user)  %> created this picture.</p>
               <hr class="hr-split">
-              <% if picture.parent %>
-                <%= link_to image_tag(Picture.find(picture.parent).user.profil_pic_url(:thumb).to_s), user_path(picture.user), :class => 'user-img' %>
+              <% if picture.parent && Picture.find_by_id(picture.parent) %>
+                <%= link_to image_tag(Picture.find_by_id(picture.parent).user.profil_pic_url(:thumb).to_s), user_path(picture.user), :class => 'user-img' %>
                 <p><%= link_to picture.user.username.split(' ').map {|w| w.capitalize }.join(' '), user_path(picture.user)  %> modified it.</p>
                <hr class="hr-split">
               <% end %>
