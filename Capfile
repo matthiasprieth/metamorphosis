@@ -26,5 +26,5 @@ namespace :deploy do
 	end
 end
 require "bundler/capistrano"
-after "deploy:update_code", "deploy:linkconfig"
+after "deploy:update_code", "deploy:linkconfig", "deploy:uploads_folder"
 
