@@ -24,13 +24,13 @@ class User < ActiveRecord::Base
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
       user = User.new(username:auth.extra.raw_info.name,
-                         provider:auth.provider,
-                         uid:auth.uid,
-                         email:auth.info.email,
-                         password:Devise.friendly_token[0,20],
-                         oauth_token:auth.credentials.token,
-                         oauth_expires_at:Time.at(auth.credentials.expires_at),
-                         username:auth.info.name
+         provider:auth.provider,
+         uid:auth.uid,
+         email:auth.info.email,
+         password:Devise.friendly_token[0,20],
+         oauth_token:auth.credentials.token,
+         oauth_expires_at:Time.at(auth.credentials.expires_at),
+         username:auth.info.name
       )
       if auth.info.image.present?
         user.remote_profil_pic_url = auth.info.image
