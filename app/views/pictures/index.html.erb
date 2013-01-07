@@ -19,22 +19,29 @@
            </div>
           </div>
           <!--fb_like-->
-          <div class="fb-like" data-href="<%= request.env['HTTP_HOST']+'/pictures/'+picture.id.to_s %>" data-send="true" data-layout="button_count" data-width="20" data-show-faces="true">LIKE</div>
+          <div class="fb-like" data-href="http://www.metamorphosis.mediacube.at/pictures/<%= picture.id.to_s %>" data-send="true" data-layout="button_count" data-width="20" data-show-faces="true">LIKE</div>
          <hr class="hr-split">
          </div>
          <div class="text">
             <div class="pic_creator">
-              <% if picture.user.profil_pic.present? %>
-                <%= link_to image_tag(picture.user.profil_pic_url(:thumb).to_s), user_path(picture.user), :class => 'user-img' %>
-              <% else %>
-                <%= link_to image_tag('default_profil_pic.jpg'), user_path(picture.user), :class => 'user-img' %>
-              <% end %>
-              <p><%= link_to picture.user.username.split(' ').map {|w| w.capitalize }.join(' '), user_path(picture.user)  %> created this picture.</p>
-              <hr class="hr-split">
               <% if picture.parent && Picture.find_by_id(picture.parent) %>
-                <%= link_to image_tag(Picture.find_by_id(picture.parent).user.profil_pic_url(:thumb).to_s), user_path(picture.user), :class => 'user-img' %>
-                <p><%= link_to picture.user.username.split(' ').map {|w| w.capitalize }.join(' '), user_path(picture.user)  %> modified it.</p>
-               <hr class="hr-split">
+                  <%= link_to image_tag(Picture.find_by_id(picture.parent).user.profil_pic_url(:thumb).to_s), user_path(Picture.find_by_id(picture.parent).user), :class => 'user-img' %>
+                  <p><%= link_to Picture.find_by_id(picture.parent).user.username.split(' ').map {|w| w.capitalize }.join(' '), user_path(Picture.find_by_id(picture.parent).user)  %> created this picture.</p>
+                  <hr class="hr-split">
+                  <% if picture.user.profil_pic.present? %>
+                      <%= link_to image_tag(picture.user.profil_pic_url(:thumb).to_s), user_path(picture.user), :class => 'user-img' %>
+                  <% else %>
+                      <%= link_to image_tag('default_profil_pic.jpg'), user_path(picture.user), :class => 'user-img' %>
+                  <% end %>
+                  <p><%= link_to picture.user.username.split(' ').map {|w| w.capitalize }.join(' '), user_path(picture.user)  %> modified it.</p>
+                  <hr class="hr-split">
+              <% else %>
+                  <% if picture.user.profil_pic.present? %>
+                      <%= link_to image_tag(picture.user.profil_pic_url(:thumb).to_s), user_path(picture.user), :class => 'user-img' %>
+                  <% else %>
+                      <%= link_to image_tag('default_profil_pic.jpg'), user_path(picture.user), :class => 'user-img' %>
+                  <% end %>
+                  <p><%= link_to picture.user.username.split(' ').map {|w| w.capitalize }.join(' '), user_path(picture.user)  %> created this picture.</p>
               <% end %>
             </div>
             <% if picture.description? %>

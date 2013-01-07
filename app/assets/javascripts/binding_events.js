@@ -1,4 +1,4 @@
-$( window ).load( function()
+$( document ).ready( function()
 {
     $('#masonry-container').masonry({
         itemSelector: '.pin'

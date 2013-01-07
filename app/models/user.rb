@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
         :name => "Metamorphosis",
         :link => 'http://metamorphosis.mediacube.at/pictures/'+like_id+'/',
         :caption => "Hey guys! Iv'e liked a picture on Metamorphosis!",
-        :picture => picture.image_url
+        :picture => "http://multimediatechnology.at/~fhs33729/files/logo.jpg"
     )
   rescue Koala::Facebook::APIError => e
     logger.info e.to_s
@@ -70,7 +70,8 @@ class User < ActiveRecord::Base
         "created a picture on Metamorphosis",
         :name => "Metamorphosis",
         :link => 'http://metamorphosis.mediacube.at/pictures/1/',
-        :caption => "Hey guys! Iv'e liked a picture on Metamorphosis!"
+        :caption => "Hey guys! Iv'e liked a picture on Metamorphosis!",
+        :picture => "http://multimediatechnology.at/~fhs33729/files/logo.jpg"
     )
   rescue Koala::Facebook::APIError => e
     logger.info e.to_s
