@@ -55,7 +55,7 @@ Metamorphosis::Application.configure do
 
   #only for local testing
   #config.action_mailer.default_url_options = { :host => 'http://localhost' }
-  config.action_mailer.default_url_options = { :host => 'metamorphosis.mediacube.at' }
+  config.action_mailer.default_url_options = { :host => 'www.metamorphosis.mediacube.at' }
 
   #only for local testing, cause localhost has no default smtp-server!
   #config.action_mailer.smtp_settings = {
