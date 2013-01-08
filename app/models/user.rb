@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
     picture=Picture.find(like_id)
     facebook.put_wall_post(
         "likes a picture on Metamorphosis",
-        :name => picture.name'on Metamorphosis',
+        :name => picture.name+'on Metamorphosis',
         :link => 'http://metamorphosis.mediacube.at/pictures/'+like_id+'/',
         :caption => "Hey guys! Iv'e liked a picture on Metamorphosis!",
         :picture => picture.pic_url(:fixedWidth).to_s
