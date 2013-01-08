@@ -52,44 +52,18 @@ class User < ActiveRecord::Base
 
   def likePicWall(like_id)
     picture=Picture.find(like_id)
-
-    logger.info("999999999999999999999999999999999999999999999999999" )
-    logger.info("picture.image_url(:fixedWidth).to_s"                 )
-    logger.info(picture.image_url(:fixedWidth).to_s                    )
-    logger.info("picture.image_url(:fixedWidth)"                       )
-    logger.info(picture.image_url(:fixedWidth)                         )
-    logger.info("picture.image_url"                                    )
-    logger.info(picture.image_url                                      )
-    logger.info("picture.image.path"                                   )
-    logger.info(picture.image.path                                     )
-    logger.info("picture.image.url"                                    )
-    logger.info(picture.image.url                                      )
-
     facebook.put_wall_post(
         "likes a picture on Metamorphosis",
         :name => picture.name+' on Metamorphosis',
         :link => 'http://metamorphosis.mediacube.at/pictures/'+like_id+'/',
-        :caption => "Hey guys! Iv'e liked a picture on Metamorphosis!",
-        :picture => picture.image.path
+        :caption => "Hey guys! Iv'e liked a picture on Metamorphosis!"
     )
-  #rescue Koala::Facebook::APIError => e
-    #logger.info e.to_s
-    #nil
+  rescue Koala::Facebook::APIError => e
+    logger.info e.to_s
+    nil
   end
 
   def createPicWall(picture)
-    logger.info("999999999999999999999999999999999999999999999999999" )
-    logger.info("picture.image_url(:fixedWidth).to_s"                 )
-    logger.info(picture.image_url(:fixedWidth).to_s                    )
-    logger.info("picture.image_url(:fixedWidth)"                       )
-    logger.info(picture.image_url(:fixedWidth)                         )
-    logger.info("picture.image_url"                                    )
-    logger.info(picture.image_url                                      )
-    logger.info("picture.image.path"                                   )
-    logger.info(picture.image.path                                     )
-    logger.info("picture.image.url"                                    )
-    logger.info(picture.image.url                                      )
-
     facebook.put_wall_post(
         "created a picture on Metamorphosis",
         :name => picture.name+'on Metamorphosis',
@@ -98,8 +72,8 @@ class User < ActiveRecord::Base
         :picture => picture.image.path
         #picture.image.url
     )
-  #rescue Koala::Facebook::APIError => e
-    #logger.info e.to_s
-  #nil
+  rescue Koala::Facebook::APIError => e
+    logger.info e.to_s
+    nil
   end
 end
