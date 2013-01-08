@@ -59,21 +59,22 @@ class User < ActiveRecord::Base
         :caption => "Hey guys! Iv'e liked a picture on Metamorphosis!",
         :picture => picture.image_url(:fixedWidth).to_s
     )
-  #rescue Koala::Facebook::APIError => e
-  #  logger.info e.to_s
-  #  nil
+  rescue Koala::Facebook::APIError => e
+    logger.info e.to_s
+    nil
   end
 
   def createPicWall(picture)
     facebook.put_wall_post(
         "created a picture on Metamorphosis",
         :name => picture.name+'on Metamorphosis',
-        :link => 'http://metamorphosis.mediacube.at/pictures/'+picture.id+'/',
+        :link => "http://metamorphosis.mediacube.at/pictures/"+picture.id.to_s+"/",
         :caption => "Hey guys! Iv'e created a picture on Metamorphosis!",
         :picture => picture.image_url(:fixedWidth).to_s
+        #picture.image.url
     )
-  #rescue Koala::Facebook::APIError => e
-  #  logger.info e.to_s
-  #  nil
+  rescue Koala::Facebook::APIError => e
+    logger.info e.to_s
+  nil
   end
 end
