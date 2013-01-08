@@ -86,7 +86,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
 
-    Picture.find_all_by_id(@user.id).each do |picture|
+    Picture.find(:all, @user).each do |picture|
       picture.destroy
     end
 
