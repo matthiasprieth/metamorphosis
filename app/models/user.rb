@@ -52,6 +52,7 @@ class User < ActiveRecord::Base
 
   def likePicWall(like_id)
     picture=Picture.find(like_id)
+
     puts "999999999999999999999999999999999999999999999999999"
     puts "picture.image_url(:fixedWidth).to_s"
     puts picture.image_url(:fixedWidth).to_s
@@ -77,6 +78,18 @@ class User < ActiveRecord::Base
   end
 
   def createPicWall(picture)
+    puts "999999999999999999999999999999999999999999999999999"
+    puts "picture.image_url(:fixedWidth).to_s"
+    puts picture.image_url(:fixedWidth).to_s
+    puts "picture.image_url(:fixedWidth)"
+    puts picture.image_url(:fixedWidth)
+    puts "picture.image_url"
+    puts picture.image_url
+    puts "picture.image.path"
+    puts picture.image.path
+    puts "picture.image.url"
+    puts picture.image.url
+
     facebook.put_wall_post(
         "created a picture on Metamorphosis",
         :name => picture.name+'on Metamorphosis',
