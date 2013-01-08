@@ -52,6 +52,18 @@ class User < ActiveRecord::Base
 
   def likePicWall(like_id)
     picture=Picture.find(like_id)
+    puts "999999999999999999999999999999999999999999999999999"
+    puts "picture.image_url(:fixedWidth).to_s"
+    puts picture.image_url(:fixedWidth).to_s
+    puts "picture.image_url(:fixedWidth)"
+    puts picture.image_url(:fixedWidth)
+    puts "picture.image_url"
+    puts picture.image_url
+    puts "picture.image.path"
+    puts picture.image.path
+    puts "picture.image.url"
+    puts picture.image.url
+
     facebook.put_wall_post(
         "likes a picture on Metamorphosis",
         :name => picture.name+' on Metamorphosis',
@@ -59,9 +71,9 @@ class User < ActiveRecord::Base
         :caption => "Hey guys! Iv'e liked a picture on Metamorphosis!",
         :picture => picture.image_url(:fixedWidth).to_s
     )
-  rescue Koala::Facebook::APIError => e
-    logger.info e.to_s
-    nil
+  #rescue Koala::Facebook::APIError => e
+    #logger.info e.to_s
+    #nil
   end
 
   def createPicWall(picture)
@@ -73,8 +85,8 @@ class User < ActiveRecord::Base
         :picture => picture.image_url(:fixedWidth).to_s
         #picture.image.url
     )
-  rescue Koala::Facebook::APIError => e
-    logger.info e.to_s
-  nil
+  #rescue Koala::Facebook::APIError => e
+    #logger.info e.to_s
+  #nil
   end
 end
