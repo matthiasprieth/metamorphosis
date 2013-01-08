@@ -53,17 +53,17 @@ class User < ActiveRecord::Base
   def likePicWall(like_id)
     picture=Picture.find(like_id)
 
-    puts "999999999999999999999999999999999999999999999999999"
-    puts "picture.image_url(:fixedWidth).to_s"
-    puts picture.image_url(:fixedWidth).to_s
-    puts "picture.image_url(:fixedWidth)"
-    puts picture.image_url(:fixedWidth)
-    puts "picture.image_url"
-    puts picture.image_url
-    puts "picture.image.path"
-    puts picture.image.path
-    puts "picture.image.url"
-    puts picture.image.url
+    logger.info("999999999999999999999999999999999999999999999999999" )
+    logger.info("picture.image_url(:fixedWidth).to_s"                 )
+    logger.info(picture.image_url(:fixedWidth).to_s                    )
+    logger.info("picture.image_url(:fixedWidth)"                       )
+    logger.info(picture.image_url(:fixedWidth)                         )
+    logger.info("picture.image_url"                                    )
+    logger.info(picture.image_url                                      )
+    logger.info("picture.image.path"                                   )
+    logger.info(picture.image.path                                     )
+    logger.info("picture.image.url"                                    )
+    logger.info(picture.image.url                                      )
 
     facebook.put_wall_post(
         "likes a picture on Metamorphosis",
@@ -78,17 +78,17 @@ class User < ActiveRecord::Base
   end
 
   def createPicWall(picture)
-    puts "999999999999999999999999999999999999999999999999999"
-    puts "picture.image_url(:fixedWidth).to_s"
-    puts picture.image_url(:fixedWidth).to_s
-    puts "picture.image_url(:fixedWidth)"
-    puts picture.image_url(:fixedWidth)
-    puts "picture.image_url"
-    puts picture.image_url
-    puts "picture.image.path"
-    puts picture.image.path
-    puts "picture.image.url"
-    puts picture.image.url
+    logger.info("999999999999999999999999999999999999999999999999999" )
+    logger.info("picture.image_url(:fixedWidth).to_s"                 )
+    logger.info(picture.image_url(:fixedWidth).to_s                    )
+    logger.info("picture.image_url(:fixedWidth)"                       )
+    logger.info(picture.image_url(:fixedWidth)                         )
+    logger.info("picture.image_url"                                    )
+    logger.info(picture.image_url                                      )
+    logger.info("picture.image.path"                                   )
+    logger.info(picture.image.path                                     )
+    logger.info("picture.image.url"                                    )
+    logger.info(picture.image.url                                      )
 
     facebook.put_wall_post(
         "created a picture on Metamorphosis",
