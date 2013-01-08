@@ -68,9 +68,7 @@ class User < ActiveRecord::Base
         "created a picture on Metamorphosis",
         :name => picture.name+'on Metamorphosis',
         :link => "http://metamorphosis.mediacube.at/pictures/"+picture.id.to_s+"/",
-        :caption => "Hey guys! Iv'e created a picture on Metamorphosis!",
-        :picture => picture.image.path
-        #picture.image.url
+        :caption => "Hey guys! Iv'e created a picture on Metamorphosis!"
     )
   rescue Koala::Facebook::APIError => e
     logger.info e.to_s
