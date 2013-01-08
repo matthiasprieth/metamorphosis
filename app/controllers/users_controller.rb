@@ -85,6 +85,11 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user = User.find(params[:id])
+
+    Picture.find(:all, @user).each do |picture|
+      picture.destroy
+    end
+
     @user.remove_profil_pic!
     @user.remove_profil_pic = true
     @user.destroy

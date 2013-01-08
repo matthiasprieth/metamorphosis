@@ -52,13 +52,12 @@ class User < ActiveRecord::Base
 
   def likePicWall(like_id)
     picture=Picture.find(like_id)
-    puts picture.image_url
     facebook.put_wall_post(
         "likes a picture on Metamorphosis",
-        :name => "Metamorphosis",
+        :name => picture.name'on Metamorphosis',
         :link => 'http://metamorphosis.mediacube.at/pictures/'+like_id+'/',
         :caption => "Hey guys! Iv'e liked a picture on Metamorphosis!",
-        :picture => "http://multimediatechnology.at/~fhs33729/files/logo.jpg"
+        :picture => picture.pic_url(:fixedWidth).to_s
     )
   rescue Koala::Facebook::APIError => e
     logger.info e.to_s
@@ -71,7 +70,7 @@ class User < ActiveRecord::Base
         :name => "Metamorphosis",
         :link => 'http://metamorphosis.mediacube.at/pictures/1/',
         :caption => "Hey guys! Iv'e liked a picture on Metamorphosis!",
-        :picture => "http://multimediatechnology.at/~fhs33729/files/logo.jpg"
+        :picture => picture.pic_url(:fixedWidth).to_s
     )
   rescue Koala::Facebook::APIError => e
     logger.info e.to_s
