@@ -81,10 +81,10 @@ class PicturesController < ApplicationController
     @picture.user_id = current_user.id
     @picture.parent = $challenge_picture_id
     @picture.pic_likes = 0
-    current_user.createPicWall
 
     respond_to do |format|
       if @picture.save
+        current_user.createPicWall(@picture)
         format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
         format.json { render json: @picture, status: :created, location: @picture }
         format.js

@@ -24,13 +24,13 @@ class User < ActiveRecord::Base
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
       user = User.new(username:auth.extra.raw_info.name,
-                         provider:auth.provider,
-                         uid:auth.uid,
-                         email:auth.info.email,
-                         password:Devise.friendly_token[0,20],
-                         oauth_token:auth.credentials.token,
-                         oauth_expires_at:Time.at(auth.credentials.expires_at),
-                         username:auth.info.name
+         provider:auth.provider,
+         uid:auth.uid,
+         email:auth.info.email,
+         password:Devise.friendly_token[0,20],
+         oauth_token:auth.credentials.token,
+         oauth_expires_at:Time.at(auth.credentials.expires_at),
+         username:auth.info.name
       )
       if auth.info.image.present?
         user.remote_profil_pic_url = auth.info.image
@@ -52,25 +52,23 @@ class User < ActiveRecord::Base
 
   def likePicWall(like_id)
     picture=Picture.find(like_id)
-    puts picture.image_url
     facebook.put_wall_post(
         "likes a picture on Metamorphosis",
-        :name => "Metamorphosis",
+        :name => picture.name+' on Metamorphosis',
         :link => 'http://metamorphosis.mediacube.at/pictures/'+like_id+'/',
-        :caption => "Hey guys! Iv'e liked a picture on Metamorphosis!",
-        :picture => picture.image_url
+        :caption => "Hey guys! Iv'e liked a picture on Metamorphosis!"
     )
   rescue Koala::Facebook::APIError => e
     logger.info e.to_s
     nil
   end
 
-  def createPicWall
+  def createPicWall(picture)
     facebook.put_wall_post(
         "created a picture on Metamorphosis",
-        :name => "Metamorphosis",
-        :link => 'http://metamorphosis.mediacube.at/pictures/1/',
-        :caption => "Hey guys! Iv'e liked a picture on Metamorphosis!"
+        :name => picture.name+'on Metamorphosis',
+        :link => "http://metamorphosis.mediacube.at/pictures/"+picture.id.to_s+"/",
+        :caption => "Hey guys! Iv'e created a picture on Metamorphosis!"
     )
   rescue Koala::Facebook::APIError => e
     logger.info e.to_s

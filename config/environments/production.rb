@@ -4,6 +4,7 @@ Metamorphosis::Application.configure do
   # Code is not reloaded between requests
   config.cache_classes = true
 
+  config.action_mailer.default_url_options = { :host => 'http://metamorphosis.mediacube.at' }
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
@@ -32,7 +33,7 @@ Metamorphosis::Application.configure do
   # config.force_ssl = true
 
   # See everything in the log (default is :info)
-  # config.log_level = :debug
+   config.log_level = :debug
 
   # Prepend all log lines with the following tags
   # config.log_tags = [ :subdomain, :uuid ]
@@ -55,7 +56,6 @@ Metamorphosis::Application.configure do
 
   #only for local testing
   #config.action_mailer.default_url_options = { :host => 'http://localhost' }
-  config.action_mailer.default_url_options = { :host => 'metamorphosis.mediacube.at' }
 
   #only for local testing, cause localhost has no default smtp-server!
   #config.action_mailer.smtp_settings = {
