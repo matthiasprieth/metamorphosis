@@ -103,7 +103,11 @@ in das model verlagern. find in den controller verlagern.
 Git + Teamarbeit
 ---------------
 
-Schaut schon sehr gut aus.
+Schaut schon ganz gut aus.
+
+Dass der upload-Ordner mit den ganzen bildern im git
+ist ist nicht gut.
+
 Um längere, aussagekräftigere Log-Messages
 zu schreiben: 
 -m weglassen, dann kommt ein editor in dem man
