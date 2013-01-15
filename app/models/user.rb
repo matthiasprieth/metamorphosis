@@ -74,4 +74,7 @@ class User < ActiveRecord::Base
     logger.info e.to_s
     nil
   end
+  def nice_username
+    self.username.split(' ').map {|w| w.capitalize }.join(' ')
+  end  
 end

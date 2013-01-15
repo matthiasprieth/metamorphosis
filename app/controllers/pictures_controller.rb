@@ -39,11 +39,12 @@ class PicturesController < ApplicationController
   # GET /pictures/1.json
   def show
     @picture = Picture.find(params[:id])
-    @children = Picture.find(:all, :conditions => {:parent => @picture.id})
-
-    if @picture.parent
-      @parent = Picture.find_by_id(@picture.parent)
+    @children = @picture.children
+    
+    unless @picture.parent.nil?
+      @parent = @picture.parent
     end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @picture }
@@ -76,7 +77,9 @@ class PicturesController < ApplicationController
   def create
     @picture = Picture.new(params[:picture])
     @picture.user_id = current_user.id
-    @picture.parent = $challenge_picture_id
+    if $challenge_picture_id
+      @picture.parent = Picture.find($challenge_picture_id)
+    end
 
     respond_to do |format|
       if @picture.save

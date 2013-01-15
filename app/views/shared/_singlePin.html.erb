@@ -1,0 +1,54 @@
+<div class="pin">
+    <div class="img-polaroid">
+        <figure class="polaroid-images">
+            <%= link_to image_tag(picture.image_url(:fixedWidth).to_s), picture.image_url, :class => 'title-img', :rel => 'lightbox[gallery1]', :title => picture.name %>
+            <figcaption class="pic_name"><%= picture.name %></figcaption>
+        </figure>
+        <div class="pic_likes">
+            <%= link_to("Download", options = {:controller => :pictures, :action => :download, :id => picture.id}, html_options = {:class => "start-challenge btn btn-mini btn-danger"}) %>
+            <%= link_to "Start Challenge", new_picture_path(:challenge_picture => picture.id), :class => "start-challenge btn btn-mini btn-info" %>
+            <%= link_to "Details", picture_path(:id => picture.id), :class => "start-challenge btn btn-mini" %>
+            <div class="likes">
+                <span class="badge badge-important number-likes"><%= picture.pic_likes %></span>
+                <% if user_signed_in? %>
+                <%= link_to "<i class='icon-thumbs-up'></i>".html_safe, root_url(:like_id => picture.id), { :method => :post, :class => "btn btn-mini btn-like"} %>
+                <% end %>
+            </div>
+        </div>
+        <!--fb_like-->
+        <div class="fb-like" data-href="http://metamorphosis.mediacube.at/pictures/<%= picture.id.to_s %>" data-send="true" data-layout="button_count" data-width="20" data-show-faces="true">LIKE</div>
+        <hr class="hr-split">
+    </div>
+    <div class="text">
+        <div class="pic_creator">
+            <% if @parent %>
+                <%= link_to image_tag(picture.parent.user.profil_pic_url(:thumb).to_s), user_path(picture.parent.user), :class => 'user-img' %>
+                <p><%= link_to picture.parent.user.nice_username, user_path(picture.parent.user)  %> created this picture.</p>
+                <hr class="hr-split">
+                <%= link_to image_tag(picture.user.profil_pic_url(:thumb).to_s), user_path(picture.user), :class => 'user-img' %>
+                <p><%= link_to picture.user.nice_username, user_path(picture.user)  %> modified it.</p>
+                <hr class="hr-split">
+            <% else %>
+                <%= link_to image_tag(picture.user.profil_pic_url(:thumb).to_s), user_path(picture.user), :class => 'user-img' %>
+                <p><%= link_to picture.user.nice_username, user_path(picture.user)  %> created this picture.</p>
+            <% end %>
+        </div>
+        <% if picture.description? %>
+            <div class="pic_description">
+                <p>description: <%= picture.description %></p>
+            </div>
+        <% end %>
+        <hr class="hr-split-visible">
+        <!--fb_comment-->
+        <!--<div class="fb-comments" href="<%#= request.env['HTTP_HOST']+'/pictures/'+picture.id.to_s %>" data-width="345" data-num-posts="1"></div>-->
+        <div id="ajaxComments<%= picture.id %>" class="ajaxComments">
+            <% @comments = Comment.where(:picture_id => picture.id) %>
+            <%= render :template => 'comments/index', :locals => { :commments => @comments }%>
+            <% @picture_id = picture.id %>
+            <% if user_signed_in? %>
+            <%= render :partial => 'comments/form', :locals => { :picture_id => @picture_id} %>
+            <% end %>
+        </div>
+    </div>
+    <hr class="hr-split">
+</div>
