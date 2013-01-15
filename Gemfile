@@ -41,6 +41,7 @@ gem 'koala' # gem for using the facebook open graph api
 gem 'bootstrap-sass' #twitter-bootstrap for sass
 gem 'masonry-rails' #A dynamic layout plugin for jQuery
 #gem 'rubylight' #A lightbox plugin for rails
+gem 'rails_best_practices' #rails best practises -> code metric tool
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
