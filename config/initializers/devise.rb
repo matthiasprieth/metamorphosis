@@ -16,7 +16,7 @@ Devise.setup do |config|
   require 'devise/orm/active_record'
 
   require "omniauth-facebook"
-  config.omniauth :facebook, "315173175265453", "2645c64f28cbf8eef8a1078d16a795ff", {:scope => 'email,publish_stream',
+  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_SECRET'], {:scope => 'email,publish_stream',
   :client_options => { :ssl => { :ca_file => "#{Rails.root}/config/ca-bundle.crt" } } }
   # with scope i request some extra graph api options like publish_stream, wich allows me to print on users fb wall
 

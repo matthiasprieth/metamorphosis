@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228193911) do
+ActiveRecord::Schema.define(:version => 20130115194048) do
 
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
@@ -37,10 +37,10 @@ ActiveRecord::Schema.define(:version => 20121228193911) do
     t.string   "gallery"
     t.float    "rating"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.string   "image"
-    t.integer  "pic_likes"
+    t.integer  "pic_likes",   :default => 0
   end
 
   create_table "rewards", :force => true do |t|
@@ -61,10 +61,10 @@ ActiveRecord::Schema.define(:version => 20121228193911) do
     t.string   "password"
     t.string   "salt"
     t.text     "description"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.datetime "created_at",                                                   :null => false
+    t.datetime "updated_at",                                                   :null => false
+    t.string   "email",                  :default => "",                       :null => false
+    t.string   "encrypted_password",     :default => "",                       :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -81,8 +81,8 @@ ActiveRecord::Schema.define(:version => 20121228193911) do
     t.string   "uid"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-    t.string   "profil_pic"
-    t.integer  "total_likes"
+    t.string   "profil_pic",             :default => "default_profil_pic.jpg"
+    t.integer  "total_likes",            :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

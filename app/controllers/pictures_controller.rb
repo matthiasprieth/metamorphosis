@@ -7,7 +7,6 @@ class PicturesController < ApplicationController
   def download
     @picture = Picture.find(params[:id])
     file = @picture.image.path
-    extension = @picture.image.file.extension.downcase
     disposition = 'attachment'
     mime = MIME::Types.type_for(file).first.content_type
     
@@ -19,9 +18,7 @@ class PicturesController < ApplicationController
         session[params[:like_id]] = params[:like_id] #store picture_likes in a session
         @picture = Picture.find_by_id(params[:like_id])
         @user = User.find_by_id(@picture.user_id)
-        @picture.pic_likes = 0 if @picture.pic_likes.nil?
         @picture.pic_likes += 1
-        @user.total_likes = 0 if @user.total_likes.nil?
         @user.total_likes += 1
         @picture.save
         @user.save
@@ -80,7 +77,6 @@ class PicturesController < ApplicationController
     @picture = Picture.new(params[:picture])
     @picture.user_id = current_user.id
     @picture.parent = $challenge_picture_id
-    @picture.pic_likes = 0
 
     respond_to do |format|
       if @picture.save

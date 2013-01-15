@@ -22,11 +22,7 @@
         <td><%= user.username.split(' ').map {|w| w.capitalize }.join(' ') %></td>
         <td>
           <span class="badge badge-important">
-            <%if user.total_likes.nil? %>
-              0
-            <% else %>
-              <%= user.total_likes %>
-            <% end %>
+            <%= user.total_likes %>
           </span>
         </td>
         <td><%= user.email %></td>

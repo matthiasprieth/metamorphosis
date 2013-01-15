@@ -1,6 +1,10 @@
 Metamorphosis::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  #fb -> APP:"Metamorphosis"
+  ENV['FACEBOOK_APP_ID'] = "315173175265453"
+  ENV['FACEBOOK_SECRET'] = "2645c64f28cbf8eef8a1078d16a795ff"
+
   # Code is not reloaded between requests
   config.cache_classes = true
 

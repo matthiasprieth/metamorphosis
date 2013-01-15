@@ -28,11 +28,7 @@
                   <%= link_to image_tag(Picture.find_by_id(picture.parent).user.profil_pic_url(:thumb).to_s), user_path(Picture.find_by_id(picture.parent).user), :class => 'user-img' %>
                   <p><%= link_to Picture.find_by_id(picture.parent).user.username.split(' ').map {|w| w.capitalize }.join(' '), user_path(Picture.find_by_id(picture.parent).user)  %> created this picture.</p>
                   <hr class="hr-split">
-                  <% if picture.user.profil_pic.present? %>
                       <%= link_to image_tag(picture.user.profil_pic_url(:thumb).to_s), user_path(picture.user), :class => 'user-img' %>
-                  <% else %>
-                      <%= link_to image_tag('default_profil_pic.jpg'), user_path(picture.user), :class => 'user-img' %>
-                  <% end %>
                   <p><%= link_to picture.user.username.split(' ').map {|w| w.capitalize }.join(' '), user_path(picture.user)  %> modified it.</p>
                   <hr class="hr-split">
               <% else %>

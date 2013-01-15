@@ -51,7 +51,6 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-    @user.total_likes = 0
 
     respond_to do |format|
       if @user.save
@@ -68,7 +67,6 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
-    @user.total_likes = 0 if @user.total_likes.nil?
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
