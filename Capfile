@@ -21,10 +21,7 @@ namespace :deploy do
 	task :linkconfig do
 		run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
 	end
-	task :uploads_folder do
-		run "ln -nfs #{shared_path}/public/uploads #{release_path}/public/uploads"
-	end
 end
 require "bundler/capistrano"
-after "deploy:update_code", "deploy:linkconfig", "deploy:uploads_folder"
+after "deploy:update_code", "deploy:linkconfig"
 
