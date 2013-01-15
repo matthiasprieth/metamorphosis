@@ -4,16 +4,14 @@
             <%= link_to image_tag(picture.image_url(:fixedWidth).to_s), picture.image_url, :class => 'title-img', :rel => 'lightbox[gallery1]', :title => picture.name %>
             <figcaption class="pic_name"><%= picture.name %></figcaption>
         </figure>
-        <div class="pic_likes">
-            <%= link_to("Download", options = {:controller => :pictures, :action => :download, :id => picture.id}, html_options = {:class => "start-challenge btn btn-mini btn-danger"}) %>
-            <%= link_to "Start Challenge", new_picture_path(:challenge_picture => picture.id), :class => "start-challenge btn btn-mini btn-info" %>
-            <%= link_to "Details", picture_path(:id => picture.id), :class => "start-challenge btn btn-mini" %>
-            <div class="likes">
-                <span class="badge badge-important number-likes"><%= picture.pic_likes %></span>
-                <% if user_signed_in? %>
-                <%= link_to "<i class='icon-thumbs-up'></i>".html_safe, root_url(:like_id => picture.id), { :method => :post, :class => "btn btn-mini btn-like"} %>
-                <% end %>
-            </div>
+        <div class="btn-group">
+            <%= link_to("Download", options = {:controller => :pictures, :action => :download, :id => picture.id}, html_options = {:class => "start-challenge btn download-btn"}) %>
+            <%= link_to "Start Challenge", new_picture_path(:challenge_picture => picture.id), :class => "start-challenge btn challenge-btn" %>
+            <%= link_to "Details", picture_path(:id => picture.id), :class => "start-challenge btn details-btn" %>
+            <span class="btn disabled"><%= picture.pic_likes %></span>
+            <% if user_signed_in? %>
+            <%= link_to "<i class='icon-thumbs-up'></i>".html_safe, root_url(:like_id => picture.id), { :method => :post, :class => "btn like-btn"} %>
+            <% end %>
         </div>
         <!--fb_like-->
         <div class="fb-like" data-href="http://metamorphosis.mediacube.at/pictures/<%= picture.id.to_s %>" data-send="true" data-layout="button_count" data-width="20" data-show-faces="true">LIKE</div>
