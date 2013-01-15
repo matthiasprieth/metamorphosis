@@ -3,6 +3,8 @@ class Comment < ActiveRecord::Base
 
   belongs_to :picture, :polymorphic => true
 
+  validates_presence_of :comment
+
   default_scope -> { order('created_at DESC') } #newest comments at the top
 
   #Comments belong to a user
