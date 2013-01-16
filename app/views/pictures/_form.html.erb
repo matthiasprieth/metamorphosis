@@ -1,10 +1,10 @@
-<%= form_for(picture , :remote => true, :multipart => true) do |f| %>
-  <% if picture.errors.any? %>
+<%= form_for(@picture , :remote => true, :multipart => true, :url => pictures_path(@picture, :challenge_picture => params[:challenge_picture])) do |f| %>
+  <% if @picture.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(picture.errors.count, "error") %> prohibited this picture from being saved:</h2>
+      <h2><%= pluralize(@picture.errors.count, "error") %> prohibited this picture from being saved:</h2>
 
       <ul>
-      <% picture.errors.full_messages.each do |msg| %>
+      <% @picture.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -27,7 +27,6 @@
     <%= f.label :gallery %><br />
     <%= f.text_field :gallery %>
   </div>
-
   <div class="actions">
     <%= f.submit 'Create Picture', :class => "btn btn-danger" %>
   </div>

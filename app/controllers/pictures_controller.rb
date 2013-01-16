@@ -49,12 +49,7 @@ class PicturesController < ApplicationController
   # GET /pictures/new
   # GET /pictures/new.json
   def new
-    @picture = Picture.new
-
-    if params[:challenge_picture]
-      @challenge_picture = Picture.find(params[:challenge_picture])
-      $challenge_picture_id = params[:challenge_picture].to_i     # $global variable
-    end
+    @picture = Picture.new()
 
     respond_to do |format|
       format.html # new.html.erb           s
@@ -72,8 +67,9 @@ class PicturesController < ApplicationController
   def create
     @picture = Picture.new(params[:picture])
     @picture.user_id = current_user.id
-    if $challenge_picture_id
-      @picture.parent = Picture.find($challenge_picture_id)
+    
+    if params[:challenge_picture]
+      @picture.parent = Picture.find(params[:challenge_picture])
     end
 
     respond_to do |format|
