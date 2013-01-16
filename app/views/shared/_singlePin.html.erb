@@ -3,9 +3,11 @@
         <figure class="polaroid-images">
             <%= link_to image_tag(picture.image_url(:fixedWidth).to_s), picture.image_url, :class => 'title-img', :rel => 'lightbox[gallery1]', :title => picture.name %>
             <div class="hover-buttons">
-                <%= link_to("Download", options = {:controller => :pictures, :action => :download, :id => picture.id}, html_options = {:class => "start-challenge download-btn"}) %>
-                <%= link_to "Start Challenge", new_picture_path(:challenge_picture => picture.id), :class => "start-challenge challenge-btn" %>
-                <%= link_to "Details", picture_path(:id => picture.id), :class => "start-challenge details-btn" %>
+                <div class="btn inner-hover">
+                    <%= link_to("Download", options = {:controller => :pictures, :action => :download, :id => picture.id}, html_options = {:class => "start-challenge btn download-btn btn-mini btn-danger"}) %>
+                    <%= link_to "Start Challenge", new_picture_path(:challenge_picture => picture.id), :class => "start-challenge challenge-btn btn btn-mini btn-info" %>
+                    <%= link_to "Details", picture_path(:id => picture.id), :class => "start-challenge details-btn btn btn-mini" %>
+                </div>
             </div>
             <figcaption class="pic_name">
                 <%= picture.name %>

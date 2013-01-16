@@ -16,7 +16,6 @@ figure {
   -ms-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  overflow: hidden;
 }
 .brand {
   font-family: vly;
@@ -221,7 +220,7 @@ a.start-challenge {
   position: absolute;
   top: 0px;
   left: 0px;
-  z-index: 999;
+  z-index: 1000;
   display: block;
   text-align: center;
   width: 100%;
@@ -229,32 +228,32 @@ a.start-challenge {
   padding: 0;
   height: 0px;
   overflow: hidden;
-  opacity: 0.8;
-  background:#000000;
+  opacity: 1;
   color:#eeeeee;
   text-shadow: -1px -1px 0px #101010;  
   vertical-align: middle;
-  box-shadow: 0 1px 2px #000000;
 }
 figure.polaroid-images .hover-buttons a {
-  color:#009fcc !important;
-  font-weight: bold;
-  line-height: 25px;
-  padding: 5px 15px;
 }
 figure.polaroid-images .hover-buttons{
-  -moz-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 figure.polaroid-images:hover .hover-buttons {
-  height: 25px;
+  height: 35px;
 }
 .btn-like {
+  opacity: 1;
   margin: 1px 2px 3px 1px;
 }
 .span4 {
   min-width: 360px;
+}
+.inner-hover {
+  position: relative;
+  margin: -5px auto 0 auto;
+  width: 57%;
 }
