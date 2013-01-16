@@ -26,8 +26,7 @@
     <div class="text">
         <div class="pic_creator">
             <% if picture.parent %>
-                <%= link_to image_tag(picture.parent.user.profil_pic_url(:thumb).to_s), user_path(picture.parent.user), :class => 'user-img' %>
-                <p><%= link_to picture.parent.user.nice_username, user_path(picture.parent.user)  %> created this picture.</p>
+                <p><%= link_to_user(picture.parent.user) %></p>
                 <hr class="hr-split">
                 <%= link_to image_tag(picture.user.profil_pic_url(:thumb).to_s), user_path(picture.user), :class => 'user-img' %>
                 <p><%= link_to picture.user.nice_username, user_path(picture.user)  %> modified it.</p>

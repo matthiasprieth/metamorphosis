@@ -3,11 +3,8 @@
 <% @comments.each do |comment| %>
 
   <tr>
-    <td><% if comment.user.profil_pic.present? %>
-          <%= link_to image_tag(comment.user.profil_pic_url(:thumb).to_s), user_path(comment.user) %>
-        <% else %>
-          <%= link_to image_tag('default_profil_pic.jpg'), user_path(comment.user) %>
-        <% end %></td>
+    <td><%= link_to image_tag(comment.user.profil_pic_url(:thumb).to_s), user_path(comment.user) %>
+    </td>
     <td><%= text_area_tag 'prev_comments', comment.comment, :disabled => 'disabled' %></td>
 
     <% if user_signed_in? && current_user == comment.user %>

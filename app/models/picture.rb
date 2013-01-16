@@ -10,6 +10,12 @@ class Picture < ActiveRecord::Base
 	    :class_name => Picture,
 	    :foreign_key => :parent
 
+	# def has_parent
+	#     if $challenge_picture_id
+	#       @picture.parent = Picture.find($challenge_picture_id)
+	#     end
+	# end
+
 	validates_presence_of :name
 	#validates :name, :presence => true
 	#from CarrierWave gem

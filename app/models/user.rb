@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
   attr_accessible :description, :email, :firstname, :lastname, :password, :salt
   attr_accessible :oauth_token, :oauth_expires_at
   has_many :pictures
-  has_many :comments
+  has_many :comments, :through => :pictures
+
   #maybe implemented in the future
   #has_and_belongs_to_many :rewards
   validates_presence_of :username
@@ -37,7 +38,7 @@ class User < ActiveRecord::Base
       end
     end
     user.skip_confirmation! #important you have to User.new and than save it, otherwise confirmationmail will be send
-    user.save
+    user.save!
     user
   end
 

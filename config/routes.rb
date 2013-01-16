@@ -17,9 +17,7 @@ Metamorphosis::Application.routes.draw do
 
   resources :users do
     resources :comments
-    resources :pictures do
-      resources :comments
-    end
+    resources :pictures
   end
   #resource :pictures do
   #  # Route GET /user/admin_login

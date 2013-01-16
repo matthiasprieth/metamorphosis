@@ -15,10 +15,10 @@
     <%= @picture.description %>
   </p>
   <% end %>
-  <% if @parent %>
+  <% if @picture.parent %>
   <p>
     <b>Parent:</b>
-    <%= link_to @parent.name, picture_path(@parent)  %>
+    <%= link_to @picture.parent.name, picture_path(@picture.parent)  %>
   </p>
   <% end %>
   <% if @picture.gallery != "" %>
@@ -49,7 +49,7 @@
 <hr class="hr-split-visible">
 <p>
   <b>Changed Versions:</b>
-    <% @children.sort_by{|e| e.pic_likes}.reverse_each do |picture| %>
+    <% @picture.children.sort_by{|e| e.pic_likes}.reverse_each do |picture| %>
     <%= render :partial => "shared/singlePin", :locals => {:picture => picture} %>
     <% end %>
 </p>

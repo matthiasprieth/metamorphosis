@@ -20,8 +20,8 @@ class PicturesController < ApplicationController
         @user = User.find_by_id(@picture.user_id)
         @picture.pic_likes += 1
         @user.total_likes += 1
-        @picture.save
-        @user.save
+        @picture.save!
+        @user.save!
     end
   end
   def index
@@ -39,12 +39,7 @@ class PicturesController < ApplicationController
   # GET /pictures/1.json
   def show
     @picture = Picture.find(params[:id])
-    @children = @picture.children
     
-    unless @picture.parent.nil?
-      @parent = @picture.parent
-    end
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @picture }
