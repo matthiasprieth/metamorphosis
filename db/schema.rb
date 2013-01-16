@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20130115194048) do
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
     t.string   "image"
-    t.integer  "pic_likes",   :default => 0
+    t.integer  "pic_likes"
   end
 
   create_table "rewards", :force => true do |t|
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(:version => 20130115194048) do
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.string   "profil_pic"
-    t.integer  "total_likes",            :default => 0
+    t.integer  "total_likes"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
