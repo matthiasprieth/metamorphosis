@@ -2,24 +2,28 @@
     <div class="img-polaroid">
         <figure class="polaroid-images">
             <%= link_to image_tag(picture.image_url(:fixedWidth).to_s), picture.image_url, :class => 'title-img', :rel => 'lightbox[gallery1]', :title => picture.name %>
-            <figcaption class="pic_name"><%= picture.name %></figcaption>
+            <div class="hover-buttons">
+                <%= link_to("Download", options = {:controller => :pictures, :action => :download, :id => picture.id}, html_options = {:class => "start-challenge download-btn"}) %>
+                <%= link_to "Start Challenge", new_picture_path(:challenge_picture => picture.id), :class => "start-challenge challenge-btn" %>
+                <%= link_to "Details", picture_path(:id => picture.id), :class => "start-challenge details-btn" %>
+            </div>
+            <figcaption class="pic_name">
+                <%= picture.name %>
+                <div class="likes">
+                <span class="badge badge-important number-likes"><%= picture.pic_likes %></span>
+                <% if user_signed_in? %>
+                <%= link_to "<i class='icon-thumbs-up'></i>".html_safe, root_url(:like_id => picture.id), { :method => :post, :class => "btn btn-mini btn-like"} %>
+                <% end %>
+            </div>
+            </figcaption>
         </figure>
-        <div class="btn-group">
-            <%= link_to("Download", options = {:controller => :pictures, :action => :download, :id => picture.id}, html_options = {:class => "start-challenge btn download-btn"}) %>
-            <%= link_to "Start Challenge", new_picture_path(:challenge_picture => picture.id), :class => "start-challenge btn challenge-btn" %>
-            <%= link_to "Details", picture_path(:id => picture.id), :class => "start-challenge btn details-btn" %>
-            <span class="btn disabled"><%= picture.pic_likes %></span>
-            <% if user_signed_in? %>
-            <%= link_to "<i class='icon-thumbs-up'></i>".html_safe, root_url(:like_id => picture.id), { :method => :post, :class => "btn like-btn"} %>
-            <% end %>
-        </div>
         <!--fb_like-->
         <div class="fb-like" data-href="http://metamorphosis.mediacube.at/pictures/<%= picture.id.to_s %>" data-send="true" data-layout="button_count" data-width="20" data-show-faces="true">LIKE</div>
         <hr class="hr-split">
     </div>
     <div class="text">
         <div class="pic_creator">
-            <% if @parent %>
+            <% if picture.parent %>
                 <%= link_to image_tag(picture.parent.user.profil_pic_url(:thumb).to_s), user_path(picture.parent.user), :class => 'user-img' %>
                 <p><%= link_to picture.parent.user.nice_username, user_path(picture.parent.user)  %> created this picture.</p>
                 <hr class="hr-split">
