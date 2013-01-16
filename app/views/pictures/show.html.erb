@@ -21,7 +21,7 @@
     <%= link_to @picture.parent.name, picture_path(@picture.parent)  %>
   </p>
   <% end %>
-  <% if @picture.gallery != "" %>
+  <% if @picture.gallery?%>
   <p>
     <b>Gallery:</b>
     <%= @picture.gallery %>

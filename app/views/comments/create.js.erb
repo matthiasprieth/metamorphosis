@@ -1,3 +1,4 @@
+alert("hallo");
 <% picture_id = params[:comment][:picture_id] %>
 <% @comments = Comment.where(:picture_id => picture_id) %>
 $('#ajaxComments<%= picture_id %> table').remove();

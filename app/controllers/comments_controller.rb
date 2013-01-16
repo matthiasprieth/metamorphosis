@@ -75,7 +75,7 @@ class CommentsController < ApplicationController
         format.js
         format.html { redirect_to root_url }
       else
-        format.html { render :action => 'new' }
+        format.html { render :new }
       end
     end
   end
@@ -90,7 +90,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render :edit }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end

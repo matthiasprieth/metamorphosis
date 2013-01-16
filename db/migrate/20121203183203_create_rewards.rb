@@ -4,6 +4,7 @@ class CreateRewards < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.string :picture_link
+
       t.timestamps
     end
   end

@@ -1,6 +1,6 @@
 class PicturesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show, :download]
-  
+
   require 'mime/types'
   # GET /pictures
   # GET /pictures.json
@@ -9,7 +9,7 @@ class PicturesController < ApplicationController
     file = @picture.image.path
     disposition = 'attachment'
     mime = MIME::Types.type_for(file).first.content_type
-    
+
     send_file file, :type => mime, :disposition => disposition
   end
   def like
@@ -39,7 +39,7 @@ class PicturesController < ApplicationController
   # GET /pictures/1.json
   def show
     @picture = Picture.find(params[:id])
-    
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @picture }
@@ -83,7 +83,7 @@ class PicturesController < ApplicationController
         format.json { render json: @picture, status: :created, location: @picture }
         format.js
       else
-        format.html { render action: "new" }
+        format.html { render :new }
         format.json { render json: @picture.errors, status: :unprocessable_entity }
         format.js
       end
@@ -100,7 +100,7 @@ class PicturesController < ApplicationController
         format.html { redirect_to @picture, notice: 'Picture was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render :edit }
         format.json { render json: @picture.errors, status: :unprocessable_entity }
       end
     end

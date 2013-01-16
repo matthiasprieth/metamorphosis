@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<% if @user.profil_pic.present? %>
+<% if @user.profil_pic? %>
   <%= image_tag(@user.profil_pic_url(:thumb).to_s) %>
 <% else %>
   <%= image_tag('default_profil_pic.jpg') %>

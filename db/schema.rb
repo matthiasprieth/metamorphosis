@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20130115194048) do
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
+  add_index "comments", ["picture_id"], :name => "index_comments_on_picture_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "pictures", :force => true do |t|
@@ -40,8 +41,10 @@ ActiveRecord::Schema.define(:version => 20130115194048) do
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
     t.string   "image"
-    t.integer  "pic_likes"
+    t.integer  "pic_likes",   :default => 0
   end
+
+  add_index "pictures", ["user_id"], :name => "index_pictures_on_user_id"
 
   create_table "rewards", :force => true do |t|
     t.string   "name"
@@ -55,6 +58,9 @@ ActiveRecord::Schema.define(:version => 20130115194048) do
     t.integer "users_id"
     t.integer "rewards_id"
   end
+
+  add_index "rewards_users", ["rewards_id"], :name => "index_rewards_users_on_rewards_id"
+  add_index "rewards_users", ["users_id"], :name => "index_rewards_users_on_users_id"
 
   create_table "users", :force => true do |t|
     t.string   "username"
@@ -81,8 +87,8 @@ ActiveRecord::Schema.define(:version => 20130115194048) do
     t.string   "uid"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-    t.string   "profil_pic"
-    t.integer  "total_likes"
+    t.string   "profil_pic",             :default => "default_profil_pic.jpg"
+    t.integer  "total_likes",            :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

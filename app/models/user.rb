@@ -47,9 +47,9 @@ class User < ActiveRecord::Base
   end
 
   #just for testing
-  def getLink
-    facebook.get_object("me")
-  end
+  #def getLink
+  #  facebook.get_object("me")
+  #end
 
   def likePicWall(like_id)
     picture=Picture.find(like_id)
@@ -77,5 +77,5 @@ class User < ActiveRecord::Base
   end
   def nice_username
     self.username.split(' ').map {|w| w.capitalize }.join(' ')
-  end  
+  end
 end

@@ -13,7 +13,7 @@
       </tr>
     <% @users.each do |user| %>
       <tr>
-        <td><% if user.profil_pic.present? %>
+        <td><% if user.profil_pic? %>
             <%= link_to image_tag(user.profil_pic_url(:thumb).to_s), user_path(user) %>
             <% else %>
             <%= link_to image_tag('default_profil_pic.jpg'), user_path(user), :id => 'user-pic-header' %>
