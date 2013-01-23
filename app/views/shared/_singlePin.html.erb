@@ -26,15 +26,15 @@
     <div class="text">
         <div class="pic_creator">
             <% if picture.parent %>
-                <p><%= link_to_user_pic(picture.parent.user) %></p>
-                <p><%= link_to_user_name(picture.parent.user) %> created this picture.</p>
+                <p><%= link_to_user_pic(picture.parent.user) %>
+                <%= link_to_user_name(picture.parent.user) %> created this picture.</p>
                 <hr class="hr-split">
-                <%= link_to image_tag(picture.user.profil_pic_url(:thumb).to_s), user_path(picture.user), :class => 'user-img' %>
-                <p><%= link_to picture.user.nice_username, user_path(picture.user)  %> modified it.</p>
+                <p><%= link_to_user_pic(picture.user) %>
+                <%= link_to_user_name(picture.user) %> modified it.</p>
                 <hr class="hr-split">
             <% else %>
-                <%= link_to image_tag(picture.user.profil_pic_url(:thumb).to_s), user_path(picture.user), :class => 'user-img' %>
-                <p><%= link_to picture.user.nice_username, user_path(picture.user)  %> created this picture.</p>
+                <p><%= link_to_user_pic(picture.user) %>
+                <%= link_to_user_name(picture.user) %> created this picture.</p>
             <% end %>
         </div>
         <% if picture.description? %>
