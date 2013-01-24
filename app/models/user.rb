@@ -57,7 +57,8 @@ class User < ActiveRecord::Base
         "likes a picture on Metamorphosis",
         :name => picture.name+' on Metamorphosis',
         :link => 'http://metamorphosis.mediacube.at/pictures/'+like_id+'/',
-        :caption => "Hey guys! Iv'e liked a picture on Metamorphosis!"
+        :caption => "Hey guys! Iv'e liked a picture on Metamorphosis!",
+        :picture => picture.image.profil_big.path
     )
   rescue Koala::Facebook::APIError => e
     logger.info e.to_s
