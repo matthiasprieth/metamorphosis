@@ -17,3 +17,6 @@
 config/database.yml
 Gemfile.lock
 /public/uploads
+
+FEEDBACK.md
+rails_best_practices_output.html
