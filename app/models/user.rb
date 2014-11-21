@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
          username:auth.info.name
       )
       if auth.info.image.present?
-        user.remote_profil_pic_url = auth.info.image
+        user.remote_profil_pic_url = auth.info.image.gsub('http://','https://')
       end
     end
     user.skip_confirmation! #important you have to User.new and than save it, otherwise confirmationmail will be send
